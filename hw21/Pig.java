@@ -10,79 +10,55 @@ public class Pig {
 	else return false; }
 
     public static boolean isAVowel( String letter ) {
-	if(vowel.length==1) return hasA(VOWELS,letter);
-	else return false; }
+		return (hasA(VOWELS, letter));
+	}
 
     public static int countVowels( String w ) {
-	int ret=0;
+	int vnum=0;
 	for(int n=0;n<w.length();n++) {
-		if(isAVowel(w.substring(n,n+1)) ret+=1;}		
-	return ret; }
+		if(isAVowel(w.substring(n,n+1))) vnum+=1;}		
+	return vnum; }
 
-
-    /*=====================================
-      boolean hasAVowel(String) -- tells whether a String has a vowel
-      pre:  w != null
-      post: hasAVowel(“cat”) → true
-			hasAVowel(“zzz”) → false
-      =====================================*/
     public static boolean hasAVowel( String w ) {
 	if(countVowels(w)!=0) return true;			
 	else return false; }
-    public static boolean hasBVowel( String w) {
-	for(int n=0;n<
 
-
-		/*=====================================
-			String allVowels(String) -- returns vowels in a String
-			pre:  w != null
-			post: allVowels(“meatball”) → “eaa”
-			=====================================*/
-		public static String allVowels( String w ) {
-				//your implementation here
-				return ""; //placeholder to get past compiler
+	public static String allVowels( String w ) {
+		String vowelret = "";
+			for (int i = 0 ; i < w.length() ; i++) {
+				if (isAVowel(w.substring(i))) {
+					vowelret += w.substring(i);
+				}
+				else { }
+			}
+		return vowelret;
+	}
+	public static String firstVowel( String w ) {
+		String fvowel = "";
+		for (int i = 0 ; i < w.length() ; i++) {
+			if (isAVowel(w.substring(i)) && fvowel.length() < 1) {
+				fvowel += w.substring(i);
+			}
+			else { }
 		}
-
-
-		/*=====================================
-			String firstVowel(String) -- returns first vowel in a String
-			pre:  w != null
-			post: firstVowel("") --> ""
-			firstVowel("zzz") --> ""
-			firstVowel("meatball") --> "e"
-			=====================================*/
-		public static String firstVowel( String w ) {
-				//your implementation here
-				return ""; //placeholder to get past compiler
+		return fvowel;
+	}
+	public static boolean beginsWithVowel( String w ) {
+		if (isAVowel(w.substring(0))) {
+			return true;
 		}
-
-
-		/*=====================================
-			boolean beginsWithVowel(String) -- tells whether String begins with a vowel
-			pre:  w != null and w.length() > 0
-			post: beginsWithVowel("apple")  --> true
-			beginsWithVowel("strong") --> false
-			=====================================*/
-		public static boolean beginsWithVowel( String w ) {
-				//your implementation here
-				return false; //placeholder to get past compiler
+		else {
+			return false;
 		}
+	}
 
 
-		/*=====================================
-			String engToPig(String) -- converts an English word to Pig Latin
-			pre:  w.length() > 0
-			post: engToPig("apple")  --> "appleway"
-			engToPig("strong") --> "ongstray"
-			engToPig("java")   --> "avajay"
-			=====================================*/
-		public static String engToPig( String w ) {
-				//your implementation here
-				return ""; //placeholder to get past compiler
-		}
-
-
-		public static void main( String[] args ) {
+	public static String engToPig( String w ) {
+		//TODO
+		return ""; //compiler stuf?
+	}
+	
+	public static void main( String[] args ) {
 
 				//Some test calls. You are encouraged to add more.
 				/*
@@ -94,13 +70,11 @@ public class Pig {
 					}   
 				*/
 
-				for( String word : args ) {
-						System.out.println( allVowels(word) );
-						System.out.println( firstVowel(word) );
-						System.out.println( countVowels(word) );
-						System.out.println( engToPig(word) );
-				}
-
-		}//end main()
-
-}//end class Pig
+		for( String word : args ) {
+			System.out.println( allVowels(word) );
+			System.out.println( firstVowel(word) );
+			System.out.println( countVowels(word) );
+			System.out.println( engToPig(word) );
+		}
+	}//end main()
+} //end class Pig
