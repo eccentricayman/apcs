@@ -54,8 +54,21 @@ public class Pig {
 
 
 	public static String engToPig( String w ) {
-		//TODO
-		return ""; //compiler stuf?
+		if (w.length () == 0) {
+           return "";
+        }        
+		else if (isAVowel (w.substring (0, 1)) == false && isAVowel (w.substring (1, 2)) == true) {
+            return (w.substring (1, w.length ()) + w.substring (0, 1) + "ay"); // C & V
+        }               
+        else if (isAVowel (w.substring (0, 1)) == false && isAVowel (w.substring (1, 2)) == false) {
+            return (w.substring (1, w.length ()) + w.substring (0, 1) + "ay"); // C & C
+        }   
+        else if ((isAVowel (w.substring (0, 1))) == true) {
+            return (w + "way"); // V
+        }
+        else {
+            return ""; //placeholder to get past compiler
+    	}
 	}
 	
 	public static void main( String[] args ) {
