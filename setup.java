@@ -18,12 +18,10 @@ public class setup {
         System.out.println("Enter HW summary: ");
         hwsummary = userin.next();
         System.out.println("Enter file name: ");
-        String hwname = userin.next();
-        hwname = hwname + ".java";
+        String filename = userin.next();
+        filename = filename + ".java";
         new File("/hw" + hwnum).mkdirs();
-        new File("/hw" + hwnum +"/" + hwname);
-        String filename;
-        filename = "\\hw" + hwnum + "\\" + hwname;
+        new File("/hw" + hwnum +"/" + filename);
         System.out.println("/*");
         System.out.println(name);
         System.out.println("APCS1 " + "pd" + period);
