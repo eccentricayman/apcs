@@ -37,3 +37,13 @@ public class setup {
 	   return todaydate;
     }
 }
+    <tabs>
+        <tab>
+            <cursor style="0" r="79" g="91" b="102"/>
+            <background type="0" r="43" g="48" b="59">
+                <image file="" relative="0" extend="0" position="0">
+                    <tint opacity="0" r="0" g="0" b="0"/>
+                </image>
+            </background>
+        </tab>
+    </tabs>
