@@ -22,12 +22,25 @@ public class setup {
         filename = filename + ".java";
         new File("/hw" + hwnum).mkdirs();
         new File("/hw" + hwnum +"/" + filename);
-        System.out.println("/*");
-        System.out.println(name);
-        System.out.println("APCS1 " + "pd" + period);
-        System.out.println("HW" + hwnum + " -- " + hwsummary);
-        System.out.println(getdate());
-        System.out.println("*/");
+        try {
+    FileWriter outputStream = new FileWriter(filename);
+    try (BufferedWriter out = new BufferedWriter(outputStream)) {
+        out.write("/*");
+        out.newLine();
+        out.write(name);
+        out.newLine();
+        out.write("APCS1 pd" + period);
+        out.newLine();
+        out.write("HW" + hwnum + " -- " + hwsummary);
+        out.newLine();
+        out.write(getdate());
+        out.newLine();
+        out.write("*/");
+    }
+} catch (IOException ex) {
+    // some sort of error message here
+    // this block will only be run if the program is unable to create or write to the specified file
+}
     }
     public static String getdate() {
        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
@@ -37,13 +50,3 @@ public class setup {
 	   return todaydate;
     }
 }
-    <tabs>
-        <tab>
-            <cursor style="0" r="79" g="91" b="102"/>
-            <background type="0" r="43" g="48" b="59">
-                <image file="" relative="0" extend="0" position="0">
-                    <tint opacity="0" r="0" g="0" b="0"/>
-                </image>
-            </background>
-        </tab>
-    </tabs>
