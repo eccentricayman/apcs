@@ -20,7 +20,7 @@ public class setup {
         System.out.println("Enter file name: ");
         String filename = userin.nextLine();
         filename = filename + ".java";
-        new File("/hw" + hwnum).mkdirs();
+        new File("/hw" + hwnum + "/").mkdirs();
         new File("/hw" + hwnum +"/" + filename);
         try {
     FileWriter outputStream = new FileWriter(filename);
@@ -38,8 +38,7 @@ public class setup {
         out.write("*/");
     }
 } catch (IOException ex) {
-    // some sort of error message here
-    // this block will only be run if the program is unable to create or write to the specified file
+    System.out.println("Well, something fucked up. Go complain to Ayman or something");
 }
     }
     public static String getdate() {
