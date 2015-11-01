@@ -138,7 +138,7 @@ public class Stats{
 	int greater = max(a,b);
 	int smaller = min(a,b);
 	int GCD = smaller;
-	while (greater%GCD != 0 || smaller%GCD != 0){
+	while (greater%GCD != 0 || smaller%GCD != 0) {
 	    GCD = greater%smaller;
 	    greater = smaller;
 	}

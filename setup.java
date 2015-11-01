@@ -10,15 +10,15 @@ public class setup {
         int period;
         String name;
         System.out.println("Enter name: ");
-        name = userin.next();
+        name = userin.nextLine();
         System.out.println("Enter APCS period: ");
         period = userin.nextInt();
         System.out.print("Enter HW number: ");
         hwnum = userin.nextInt();
         System.out.println("Enter HW summary: ");
-        hwsummary = userin.next();
+        hwsummary = userin.nextLine();
         System.out.println("Enter file name: ");
-        String filename = userin.next();
+        String filename = userin.nextLine();
         filename = filename + ".java";
         new File("/hw" + hwnum).mkdirs();
         new File("/hw" + hwnum +"/" + filename);
