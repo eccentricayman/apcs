@@ -2,7 +2,7 @@ import java.util.*;
 import java.text.*;
 import java.io.*;
 
-public class setup {
+public class heading {
     public static void main(String[] args) {
         Scanner userin = new Scanner(System.in);
         int hwnum = 0;
