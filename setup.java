@@ -16,7 +16,10 @@ public class setup {
         period = userin.nextInt();
         System.out.print("Enter HW number: ");
         hwnum = userin.nextInt();
-        new File("/hw" + hwnum + "/").mkdirs();
+        boolean success = (new File("hw" + hwnum)).mkdirs();
+        if (!success) {
+            System.out.println("Couldn't create the directory, your hw number already exists / is being weird try something else or try again");
+        }
         String filler = userin.nextLine();
         System.out.println("Enter HW summary: ");
         hwsummary = userin.nextLine();
@@ -25,7 +28,7 @@ public class setup {
         filename += ".java";
         new File("/hw" + hwnum +"/" + filename);
         try {
-    FileWriter outputStream = new FileWriter("/hw" + hwnum +"/" + filename);
+    FileWriter outputStream = new FileWriter("hw" + hwnum +"/" + filename);
     try (BufferedWriter out = new BufferedWriter(outputStream)) {
         out.write("/*");
         out.newLine();
@@ -40,7 +43,7 @@ public class setup {
         out.write("*/");
     }
 } catch (IOException ex) {
-    System.out.println("Well, something fucked up. Go complain to Ayman or something");
+    System.out.println("Well, something fucked up somewhere. Go rerun or something and have fun with that");
 }
     }
     public static String getdate() {
