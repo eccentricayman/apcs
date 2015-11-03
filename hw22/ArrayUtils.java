@@ -8,7 +8,7 @@ HW#22 -- Augmenting Your Array of Tools
 import java.util.Random;
 
 public class ArrayUtils {
-    Random rnum = new Random();
+	Random rnum = new Random();
     public static void Populate(int[] a) {
 	for (int i = 0 ; i < a.length ; i++) {
 	    a[i] = rnum.nextInt(Integer.MAX_VALUE);
@@ -17,13 +17,13 @@ public class ArrayUtils {
     public static String arrayReturn(int[] a) {
 	String retstr = "";
 	for (int i = 0 ; i < a.length ; i++) {
-	    retstr += Arrays.toString(a[i]);
+	    retstr += Integer.toString(a[i]);
 	}
 	return retstr;
     }
     public static void main(String[] args) {
-	int[] array = new int[5];
-	Populate(a);
-	System.out.println(arrayReturn(a));
+	int[] array =  new int[5];
+	Populate(array);
+	System.out.println(arrayReturn(array));
     }
 }
