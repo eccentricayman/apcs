@@ -71,34 +71,35 @@ public class ArrayUtils {
     public static int linSearchR(int[] a, int target) {
     	int index = 0; 
     	if (index < a.length) {
-	    if (a[index] == target) {
-		return index;
-	    }
+    		if (a[index] == target) {
+    			return index;
+    		}
     		else {
-		    index += 1;
-		    return linSearchR(a, target);
+    			index += 1;
+    			return linSearchR(a, target);
     		}
     	}
     	else {
-	    return -1;
+    		return -1;
     	}
     }
-    
+
     public static int linSearchR(String[] a, String target) {
-    	int index = 0; 
-    	if (index < a.length) {
+	int index = 0;
+	if (index < a.length) {
 	    if (a[index].equals(target)) {
-		return 0;
+		return index;
 	    }
 	    else {
-		return linSearchRhelp(a, target);
+		index += 1;
+		return linSearchR(a, target);
 	    }
-    	}
-    	else {
+	}
+	else {
 	    return -1;
-    	}
+	}
     }
-    
+
     public static int freq(int[] a, int target) {
     	int ctr = 0;
     	for (int i = 0 ; i <a.length ; i++) {

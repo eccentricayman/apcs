@@ -49,6 +49,31 @@ public class Loopier {
     		if (currentvalue == target) {
     			ctr += 1;
     		}
-    		
-
+    		for (int i = 1 ; i < a.length ; i++) {  //for loop to set values of shortened array, starts at 1 because of nextarray's length
+    			nextarray[i-1] = a[i];
+    		}
+    	}
+    	else {
+    		return 0;
+    	} 
+    	return ctr + freqRec(nextarray, target);
+    }
+    public static void main(String[] args) {
+    	int[] x = new int[3];
+    	x[0] = 2;
+    	x[1] = 2;
+    	x[2] = 3;
+    	System.out.println(linSearch(x, 1));
+    	System.out.println(linSearch(x, 2));
+    	System.out.println(linSearch(x, 3));
+    	System.out.println(linSearchR(x, 1));
+    	System.out.println(linSearchR(x, 2));
+    	System.out.println(linSearchR(x, 3));
+    	System.out.println(freq(x, 1));
+    	System.out.println(freq(x, 2));
+    	System.out.println(freq(x, 3));
+	//   	System.out.println(freqRec(x, 1));
+	//    	System.out.println(freqRec(x, 2));
+	//    	System.out.println(freqRec(x, 3));
+    }  //end main
 } //end class
