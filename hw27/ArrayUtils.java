@@ -43,9 +43,9 @@ public class ArrayUtils {
 		StringArray[2] = "third";
 		StringArray[3] = "third";
 		StringArray[4] = "third";
-		System.out.println(arrayReturn(StringArray));
+		System.out.println(arrayReturn(StringArray) + "\n");
 		System.out.println(linSearch(StringArray, "third"));
-		System.out.println(linSearchR(StringArray, "third"));
+		System.out.println(linSearchR(StringArray, "third") + "\n");
 		System.out.println(freq(StringArray, "second"));
 		System.out.println(freq(StringArray, "third"));
     }
@@ -64,7 +64,7 @@ public class ArrayUtils {
 	    if (a[i].equals(target)) {
 		return i;
 	    }
-	}
+	} 
 	return -1;
     }
     
@@ -84,19 +84,23 @@ public class ArrayUtils {
     	}
     }
     
-    public static int linSearchR(String[] a, String target) {
-    	int index = 0; 
+    public static int linSearchRhelper(String[] a, String target, int cindex) {
+    	int index = cindex; 
     	if (index < a.length) {
 	    if (a[index].equals(target)) {
 		return 0;
 	    }
 	    else {
-		return linSearchRhelp(a, target);
+		return linSearchRhelper(a, target, index + 1);
 	    }
     	}
     	else {
 	    return -1;
     	}
+    }
+    
+    public static int linSearchR(String[] a, String target) {
+    	return linSearchRhelper(a, target, 0);
     }
     
     public static int freq(int[] a, int target) {
