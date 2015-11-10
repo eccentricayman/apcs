@@ -34,20 +34,23 @@ public class ArrayUtils {
     }
 
     public static void main(String[] args) {
-		int[] array =  new int[5];
-		Populate(array, 15);     //testing methods
-		System.out.println(arrayReturn(array));
-		String[] StringArray = new String[5];
-		StringArray[0] = "first";
-		StringArray[1] = "second";
-		StringArray[2] = "third";
-		StringArray[3] = "third";
-		StringArray[4] = "third";
-		System.out.println(arrayReturn(StringArray) + "\n");
-		System.out.println(linSearch(StringArray, "third"));
-		System.out.println(linSearchR(StringArray, "third") + "\n");
-		System.out.println(freq(StringArray, "second"));
-		System.out.println(freq(StringArray, "third"));
+		String[] array = new String[5];
+		array[0] = "first";
+		array[1] = "second";
+		array[2] = "third";
+		array[3] = "third";
+		array[4] = "third";
+		System.out.println("ArrayReturn");
+		System.out.println(arrayReturn(array) + "\n");
+		System.out.println("Linear Search, Recursive");
+		System.out.println(linSearch(array, "third"));
+		System.out.println(linSearchR(array, "third") + "\n");
+		System.out.println("Frequency");
+		System.out.println(freq(array, "second"));
+		System.out.println(freq(array, "third") + "\n");
+		System.out.println("Frequency, Recursive");
+		System.out.println(freqRec(array, "second"));
+		System.out.println(freqRec(array, "third"));
     }
 
     public static int linSearch(int[] a, int target) {
@@ -123,6 +126,33 @@ public class ArrayUtils {
 	return ctr;
     }
     
-    //NEVER GOT FREQREC WORKING, SO THERE'S NOTHING HERE :(
+    public static int freqRec(int[] a, int target) {
+    	int ctr = 0;
+    	if (a.length != 0) {
+    		int currentvalue = a[0];
+    		int[] nextarray = new int[a.length - 1]; //new array with length 1 less than a
+    		if (currentvalue == target) {
+    			ctr += 1;
+    		}
+    		return -1;
+        }
+        else {
+        	return ctr;
+        }
+    }
 
+	public static int freqRec(String[] a, String target) {
+    	int ctr = 0;
+    	if (a.length != 0) {
+    		String currentvalue = a[0];
+    		String[] nextarray = new String[a.length - 1]; //new array with length 1 less than a
+    		if (currentvalue.equals(target)) {
+    			ctr += 1;
+    		}
+    		return -1;
+        }
+        else {
+        	return ctr;
+        }
+    }
 } //end class

@@ -49,6 +49,8 @@ public class Loopier {
     		if (currentvalue == target) {
     			ctr += 1;
     		}
+        }
+    }
     		
 
 } //end class

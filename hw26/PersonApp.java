@@ -57,7 +57,6 @@ public class PersonApp {
 	System.out.println( "Scotty after nose-swap:" );
 	System.out.println( Scotty );
 
-
 	/* ==================================
 	================================== */
     }
