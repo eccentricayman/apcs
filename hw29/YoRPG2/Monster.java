@@ -1,10 +1,9 @@
-public class Monster {
+//Anton Goretsky, Ayman Ahmed, Jason Dong -- Team Byte-me
+//APCS1 pd5
+//HW28 -- Ye Olde Role Playing Game
+//2015-11-10
 
-    public String name;
-    public int health;
-    public int strength;
-    public int defense;
-    public double attack;
+public class Monster extends Character {
 
     public Monster() {
 	health = 150;
@@ -12,31 +11,6 @@ public class Monster {
 	defense = 20;
 	attack = 1;
 	name = "smaug";
-    }
-
-    public Boolean isAlive() {
-	return health > 0;
-    }
-
-    public int getDefense() {
-	return defense;
-    }
-
-    public String getName() {
-	return name;
-    }
-
-    public void lowerHP(int damage){
-	health -= damage;
-    }
-
-    public int attack(Warrior pat) {
-	int damage = (int) ((strength * attack) - pat.getDefense());
-	if (damage < 0) {
-	    damage = 0;
-	}
-	pat.lowerHP(damage);
-	return damage;
     }
 }
 	    

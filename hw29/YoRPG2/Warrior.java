@@ -1,51 +1,30 @@
-public class Warrior {
+//Anton Goretsky, Ayman Ahmed, Jason Dong -- Team Byte-Me
+//APCS1 pd5
+//HW29 -- Ye Olde Role Playing Game, Improved
+//2015-11-10
 
-    public String name;
-    public int health;
-    public int strength;
-    public int defense;
-    public double attackRating;
+public class Warrior extends Character {
 
-    public Warrior(String wName) {
-	name = wName;
+    public Warrior() {
+	name = "pat";
 	health = 100;
 	strength = 100;
 	defense = 50;
-	attackRating = .5;
+	attack = .5;
     }
 
-    public Boolean isAlive() {
-	return health > 0;
+    public Warrior(String wName) {
+	this();
+	name = wName;
     }
-
-    public int getDefense() {
-	return defense;
-    }
-
-    public String getName() {
-	return name;
-    }
-
-    public void lowerHP(int damage) {
-	health -= damage;
-    }
-
-    public int attack(Monster smaug) {
-	int damage = (int) ((strength * attackRating) - smaug.getDefense());
-	if (damage < 0) {
-	    damage = 0;
-	}
-	smaug.lowerHP(damage);
-	return damage;
-    }
-
+    
     public void specialize() {
 	defense = 25;
-	attackRating = .8;
+	attack = .8;
     }
 
     public void normalize() {
 	defense = 50;
-	attackRating = .5;
+	attack = .5;
     }
 }

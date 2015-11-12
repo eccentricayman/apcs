@@ -1,10 +1,8 @@
-//Team Byte-Me -- Anton Goretsky, Jason Dong, Ayman Ahmed
+//Anton Goretsky, Ayman Ahmed, Jason Dong
 //APCS1 pd5
-
 //HW28 -- Ye Olde Role Playing Game
-
 //2015-11-10
-
+//Team: Byte-me
 
 /*=============================================
   class YoRPG -- Driver file for Ye Olde Role Playing Game.
