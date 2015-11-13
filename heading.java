@@ -44,7 +44,7 @@ public class heading {
 		}
 	} 
 	catch (IOException ex) {
-	    System.out.println("Well, something fucked up somewhere. Go rerun or something and have fun with that");
+	    System.out.println("Well, something dun goofed somewhere. Have fun with that");
 	}
     }
     public static String getdate() {
