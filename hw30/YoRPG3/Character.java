@@ -3,7 +3,7 @@
 //HW29 -- Ye Olde Role Playing Game, Improved
 //2015-11-11
 
-public class Character {
+public abstract class Character {  
 
     protected int health;
     protected int strength;
@@ -16,34 +16,28 @@ public class Character {
     }
 
     public int getDefense() {
-	return defense;
+	   return defense;
     }
-
+  
     public String getName() {
-	return name;
+	   return name;
     }
 
     public void lowerHP(int damage) {
-	health -= damage;
+	   health -= damage;
     }
 
     public int attack(Character character) {
-	int damage = (int) ((strength * attack) - character.getDefense());
-	if (damage < 0) {
-	    damage = 0;
-	}
-	character.lowerHP(damage);
-	return damage;
+	   int damage = (int) ((strength * attack) - character.getDefense());
+	   if (damage < 0) {
+	       damage = 0;
+	   }
+	   character.lowerHP(damage);
+	   return damage;
     }
 
-    public void normalize() {
-	defense = 50;
-	attack = 0.5;
-    }
-
-    public void specialize() {
-	defense /= 4;
-	attack *= 2;
-    }
+    public abstract void normalize();
+    public abstract void specialize();
+    public abstract String about(); //abstract was used so each subclass can call it's own version of about, normalize, and specialize
 
 }

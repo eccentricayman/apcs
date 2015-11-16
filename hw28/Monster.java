@@ -13,7 +13,6 @@ public class Monster {
 	attack = 1;
 	name = "smaug";
     }
-
     public Boolean isAlive() {
 	return health > 0;
     }

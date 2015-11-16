@@ -21,8 +21,8 @@ public class YoRPG {
     public final static int MAX_ENCOUNTERS = 5;
 
     //each round, a Warrior and a Monster will be instantiated
-    private Warrior pat;   //Is it man or woman?
-    private Monster smaug; //Friendly generic monster name, eh?
+    private Character aragorn;   //Is it man or woman?
+    private Monster orc; //Friendly generic monster name, eh?
 
     private int moveCount;
     private boolean gameOver;
@@ -55,13 +55,16 @@ public class YoRPG {
     public void newGame() {
 
 	String s;
+	String str;
 	String name = "";
-	s = "Welcome to Ye Olde RPG!\n";
+	String role = "";
+
+	s = "Welcome to Middle Earth!\n";
 
 	s += "\nChoose your difficulty: \n";
-	s += "\t1: Easy\n";
-	s += "\t2: Not so easy\n";
-	s += "\t3: Beowulf hath nothing on me. Bring it on.\n";
+	s += "\t1: A wee lad, going upon his first adventure. \n";
+	s += "\t2: A battle hardened warrior, ready to start anew.\n";
+	s += "\t3: The flames of hell rise to greet your challege.\n";
 	s += "Selection: ";
 	System.out.print( s );
 
@@ -70,7 +73,7 @@ public class YoRPG {
 	}
 	catch ( IOException e ) { }
 
-	s = "Intrepid warrior, what doth thy call thyself? (State your name): ";
+	s = "O wanderer of Middle Earth, what is your name?\n";
 	System.out.print( s );
 
 	try {
@@ -78,16 +81,32 @@ public class YoRPG {
 	}
 	catch ( IOException e ) { }
 
+	str = "What class of adventurer do you take after?\n";
+	System.out.print( str );
 
-	//instantiate the player's character
-	pat = new Warrior( name );
+	try {
+		role = in.readLine();
+	}
+	catch (IOException e) { }
+
+	if (role.toLowerCase() == "rogue") {
+	    aragorn = new Rogue(name); //hobbit is rogue
+	}
+	else if (role.toLowerCase() == "berserker") {
+		aragorn = new Berserker(name);  //dwarf is berserker
+	}
+	else if (role.toLowerCase() == "mage") {
+		aragorn = new Mage(name);  //elf is mage
+	}
+	else {
+		aragorn = new Warrior(name); //human is warrior, and warrior is default
+	}
 
     }//end newGame()
 
-
     /*=============================================
       boolean playTurn -- simulates a round of combat
-      pre:  Warrior pat has been initialized
+      pre:  Warrior aragorn has been initialized
       post: Returns true if player wins (monster dies).
             Returns false if monster wins (player dies).
       =============================================*/
@@ -102,51 +121,51 @@ public class YoRPG {
 	else {
 	    System.out.println( "Lo, yonder monster approacheth!" );
 
-	    smaug = new Monster();
+	    orc = new Monster();
 
-	    while( smaug.isAlive() && pat.isAlive() ) {
+	    while( orc.isAlive() && aragorn.isAlive() ) {
 
 		// Give user the option of using a special attack:
 		// If you land a hit, you incur greater damage,
 		// ...but if you get hit, you take more damage.
 		try {
-		    System.out.println( "Do you feel lucky?" );
-		    System.out.println( "\t1: Nay.\n\t2: Aye!" );
+		    System.out.println( "You see an opportunity to land a brutal strike upon the orc." );
+		    System.out.println( "\t1: You play it safe, and await another opportunity. \n\t2: You take the strike, but leave yourself open." );
 		    i = Integer.parseInt( in.readLine() );
 		}
 		catch ( IOException e ) { }
 
 		if ( i == 2 )
-		    pat.specialize();
+		    aragorn.specialize();
 		else
-		    pat.normalize();
+		    aragorn.normalize();
 
-		d1 = pat.attack( smaug );
-		d2 = smaug.attack( pat );
+		d1 = aragorn.attack( orc );
+		d2 = orc.attack( aragorn );
 
-		System.out.println( pat.getName() + " dealt " + d1 +
+		System.out.println( aragorn.getName() + " dealt " + d1 +
 				    " points of damage.");
 
-		System.out.println( "Ye Olde Monster hit back for " + d2 +
+		System.out.println( "The orc retaliates, dealing " + d2 +
 				    " points of damage.");
 	    }//end while
 
 	    //option 1: you & the monster perish
-	    if ( !smaug.isAlive() && !pat.isAlive() ) {
-		System.out.println( "'Twas an epic battle, to be sure... " + 
-				    "You cut ye olde monster down, but " +
-				    "with its dying breath ye olde monster. " +
-				    "laid a fatal blow upon thy skull." );
+	    if ( !orc.isAlive() && !aragorn.isAlive() ) {
+		System.out.println( "'As you run the orc through with all the strength you can muster... " + 
+				    "the orc reaches out with a dying breath, " +
+				    "and you feel a stab in your stomach." +
+				    "You lie upon the ground, both the orc's and your blood pooling around as the world goes black." );
 		return false;
 	    }
 	    //option 2: you slay the beast
-	    else if ( !smaug.isAlive() ) {
-		System.out.println( "HuzzaaH! Ye olde monster hath been slain!" );
+	    else if ( !orc.isAlive() ) {
+		System.out.println( "You have slain the orc, but his brethren still roam these lands." );
 		return true;
 	    }
 	    //option 3: the beast slays you
-	    else if ( !pat.isAlive() ) {
-		System.out.println( "Ye olde self hath expired. You got dead." );
+	    else if ( !aragorn.isAlive() ) {
+		System.out.println( "Feeling a sharp pain and hearing a guttural cry of victory, you fall, seeing nothing but blood and the ground rising to meet you." );
 		return false;
 	    }
 	}//end else
@@ -173,17 +192,8 @@ public class YoRPG {
 	    System.out.println();
 	}
 
-	System.out.println( "Thy game doth be over." );
-	/*=============================================
-
-	  =============================================*/
-
+	System.out.println( "And so, weary adventurer, does your tale end." );
+	
     }//end main
 
 }//end class YoRPG
-
-
-
-
-/*=============================================
-  =============================================*/
