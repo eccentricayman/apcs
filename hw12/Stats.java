@@ -21,7 +21,7 @@ public class Stats {
 
     public static int mean(int a, int b) {
         return (a + b) / 2;
-        }
+    }
  
  
     public static double mean(double a, double b) {
