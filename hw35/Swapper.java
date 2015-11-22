@@ -1,5 +1,5 @@
 /*
-Ayman Ahmed
+Team Sparkly Rainbow Walrus Unicorns -- Ayman Ahmed and Lisa Shi
 APCS1 pd5
 HW#35 -- Put it Together
 2015-11-20
@@ -21,6 +21,13 @@ public class Swapper {
     }
 
     public static void main(String[] args) {
+
+    	//Write Java class Swapper that will create a 2D array of unique
+		// 3- or 4-character
+		//  Strings and display it in the terminal.
+		// It will then prompt the user to specify two locations,
+		// swap the items at these locations, and redisplay the array.
+
     	System.out.println("Creating array...");
 
         String[][] swaparray = new String[][] {
