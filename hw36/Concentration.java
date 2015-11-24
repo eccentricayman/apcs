@@ -20,7 +20,7 @@ public class Concentration {
 	private static int _numRows = 4;
 
 	//insert constructor and methods here
-
+    
 	//default constructor
 	public Concentration() {
 	   _board = new Tile[_numRows][_numRows];
