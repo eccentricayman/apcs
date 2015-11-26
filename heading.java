@@ -10,6 +10,17 @@ public class heading {
         int period = 0;
         String name = "";
         String filename = "";
+        if (new File("heading.txt").isFile()) {
+            try (BufferedReader headingreader = new BufferedReader(new FileReader("heading.txt"))) { 
+                name = headingreader.readLine();
+                period = Integer.parseInt(headingreader.readLine());
+            }
+            catch (Exception e) {
+                System.out.println("Error parsing heading.txt, try deleting it.");
+            }
+        }
+        else {
+        System.out.println("Heading.txt not found, running first time setup.");
         System.out.println("Enter name: ");
         name = userin.nextLine();
         System.out.println("Enter APCS period: ");
@@ -18,7 +29,7 @@ public class heading {
         hwnum = userin.nextInt();
         boolean success = (new File("hw" + hwnum)).mkdirs();
         if (!success) {
-            System.out.println("Couldn't create the directory, your hw number already exists / is being weird try something else or try again");
+            System.out.println("Couldn't create the directory, your hw number already exists.");
         }
         String filler = userin.nextLine();
         System.out.println("Enter HW summary: ");
@@ -28,6 +39,7 @@ public class heading {
         filename += ".java";
         new File("/hw" + hwnum +"/" + filename);
         try {
+        FileWriter savedoutStream = new FileWriter("heading.txt");
 	    FileWriter outputStream = new FileWriter("hw" + hwnum +"/" + filename);
 	    try (BufferedWriter out = new BufferedWriter(outputStream)) {
 		    out.write("/*");
@@ -42,16 +54,24 @@ public class heading {
 		    out.newLine();
 		    out.write("*/");
 		}
+        try (BufferedWriter savedout = new BufferedWriter(savedoutStream)) {
+            savedout.write(name);
+            savedout.newLine();
+            savedout.write(period);
+            System.out.println("First run complete, name and period saved in heading.txt");
+        }
 	} 
-	catch (IOException ex) {
-	    System.out.println("Well, something dun goofed somewhere. Have fun with that");
-	}
+	   catch (IOException ex) {
+	       System.out.println("Well, something dun goofed somewhere. Have fun with that");
+	   }
+       }
     }
+    
     public static String getdate() {
-	DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-	Date date = new Date();
-	String todaydate;
-	todaydate = dateformat.format(date);
-	return todaydate;
+    	DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+    	Date date = new Date();
+    	String todaydate;
+    	todaydate = dateformat.format(date);
+    	return todaydate;
     }
 }
