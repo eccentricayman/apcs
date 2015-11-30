@@ -19,9 +19,31 @@ public class GuessNumber {
     public static void main(String[] args) {
         int num = ngen();
         int nguess = 0;
+	int uguess = 1000; //just to initialize
+	int min = 1;
+	int max = 100;
         System.out.println("Random number generated.");
-        System.out.println("Guess a number from 1-100!");
-        
+	System.out.println("Guess a number from 1-100!");
+	while (uguess != num) {
+	    uguess = Keyboard.readInt();
+	    if (uguess > num) {
+		max = uguess - 1;
+		System.out.println("Too high, try again.");
+		nguess += 1;
+		System.out.println("Guess a number from "+ min + " to " + max + " .");
+	    }
+	    else if (uguess == num) {
+		nguess += 1;
+		System.out.println("Correct! It took " + nguess + " guesses.");
+	    }
+	    else {
+		min = uguess + 1;
+		System.out.println("Too low, try again.");
+		nguess += 1;
+		System.out.println("Guess a number from " + min + " to " + max + " .");
+	    }
+	}
+	
     }
     
 }
