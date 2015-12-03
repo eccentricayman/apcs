@@ -49,10 +49,10 @@ public class SuperArray {
     //output array in [a,b,c] format, eg
     // {1,2,3}.toString() -> "[1,2,3]"
     public String toString() { 
-        String retstr = "[";
-        for (int i = 0 ; i < _size ; i++) {
+        String retstr = "["; 
+        for (int i = 0 ; i < _size ; i++) {  
             retstr += _data[i];
-            retstr += ", ";
+            retstr += ", ";  //personal preference to have a space along with the comma
         }
         if (retstr.length() > 1) {
             retstr = retstr.substring(0, retstr.length() - 2); //get rid of trailing comma
