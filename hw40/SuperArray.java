@@ -94,24 +94,20 @@ public class SuperArray {
         _data[_lastPos] = a;
         _size += 1;
     }
-    
     public void add(int a, int index) {
-        if (index > _lastPos) {
+        if (index > _lastPos) { 
             add(a);
         }
         else {
+            for (int i = _size ; i>=index ; i--) {
+                _data[i] = _data[i - 1];
+            }
+            _data[index] = a;
+            _lastPos += 1;
             _size += 1;
-            while (_data.length < _size) { 
-                expand();
-            }
-            add(a);
-            _size -= 1;
-            for (int i = _lastPos; i >= index; i--) { //starts at the lastpos
-                set(i, set(i + 1, _data[i]));  //puts all elements after last position one step up
-            }
         }
     }
-
+    
     public int remove(int index) {
         int temp = _data[index];
         for (int i = index ; i < _lastPos ; i++) { //starts loop at deleted index
