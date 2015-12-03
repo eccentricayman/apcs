@@ -1,5 +1,5 @@
 /*
-Ayman Ahmed
+Team '(1 2 3) -- Ayman Ahmed, Anton Goretsky, Kathy Lau
 APCS1 pd5
 HW#40 -- Array of Grade 316
 2015-12-02
@@ -28,7 +28,15 @@ public class SuperArray {
         //size of this instance of SuperArray
     private int _size;
 
-        
+    //=====Accessors for instance variables=========
+    public int lastPos() {
+        return _lastPos;
+    }
+
+    public int size() { //better to have and not need than to not have and need
+        return _size;
+    }
+    
         //~~~~~METHODS~~~~~
     //default constructor that initializes 10-item array
     public SuperArray() {
@@ -40,13 +48,15 @@ public class SuperArray {
         
     //output array in [a,b,c] format, eg
     // {1,2,3}.toString() -> "[1,2,3]"
-    public String toString() {
+    public String toString() { 
         String retstr = "[";
-        for (int i = 0 ; i < _data.length - 1 ; i++) {
+        for (int i = 0 ; i < _size ; i++) {
             retstr += _data[i];
             retstr += ", ";
         }
-        retstr += _data[_data.length - 1];
+        if (retstr.length() > 1) {
+            retstr = retstr.substring(0, retstr.length() - 2); //get rid of trailing comma
+        }
         retstr += "]";
         return retstr;
     }
@@ -54,11 +64,11 @@ public class SuperArray {
         
     //double capacity of this SuperArray
     private void expand() {
-        int[] tmp = new int[_data.length * 2];
+        int[] temp = new int[_data.length * 2];
         for (int i = 0 ; i < _data.length ; i++) {
-            tmp[i] = _data[i];
+            temp[i] = _data[i];
         }      
-        _data = tmp;
+        _data = temp;
     }
 
         
@@ -76,33 +86,40 @@ public class SuperArray {
         return old;
     }
     
-    public boolean add(int a) {
-        try {
-            _lastPos += 1;
-            _data[_lastPos] = a;
-            _size += 1;
-            return true;
+    public void add(int a) { 
+        _lastPos += 1;
+        if (_lastPos >= _size) { //expand the array until the size is big enough
+            expand();
         }
-        catch (Exception e) {
-            return false;
-        }
+        _data[_lastPos] = a;
+        _size += 1;
     }
     
-    public boolean add(int a, int index) {
+    public void add(int a, int index) {
         if (index > _lastPos) {
             add(a);
         }
         else {
-            size += 1;
-            while (_data.length < size) {
+            _size += 1;
+            while (_data.length < _size) { 
                 expand();
             }
             add(a);
             _size -= 1;
-            for (int i = _lastPos; i >= index; i--) {
-                
+            for (int i = _lastPos; i >= index; i--) { //starts at the lastpos
+                set(i, set(i + 1, _data[i]));  //puts all elements after last position one step up
             }
         }
+    }
+
+    public int remove(int index) {
+        int temp = _data[index];
+        for (int i = index ; i < _lastPos ; i++) { //starts loop at deleted index
+            set(i, set(i + 1, _data[i])); 
+        }
+        _size -= 1;
+        _lastPos -= 1;
+        return temp;
     }
 
     //main method for testing
@@ -111,23 +128,37 @@ public class SuperArray {
         SuperArray test = new SuperArray();
         System.out.println("Last Position: " + test._lastPos);
         System.out.println("Size: " + test._size);
+        System.out.println("\nTesting toString by printing empty array...");
+        System.out.println(test.toString());
         System.out.println("\nTesting accessors and mutators...");
-        for (int i = 0 ; i < 10 ; i++) {  //10 is hardcoded in for now, actual length will be implemented in future
+        for (int i = 0 ; i < test._data.length ; i++) {  
             test.set(i, i + 1);
         }
-        for (int a = 0 ; a < 10 ; a++) {  //hardcoded 10
+        for (int a = 0 ; a < test._data.length ; a++) {  //hardcoded 10
             System.out.println(test.get(a));
         }
         System.out.println("\nTesting expand...");
         test.expand();
         System.out.println("New Length: " + "20");  //this will be replaced in future with a getlength accessor
         System.out.println("\nFilling expanded superarray...");
-        for (int b = 0 ; b < 20 ; b++) {  //hardcoded 20
+        for (int b = 0 ; b < test._data.length ; b++) { 
             test.set(b, b + 1);
         }
-        System.out.println("\nTesting toString...");
+        System.out.println("\nTesting add...");
+        test.add(128);
+        test.add(256);
+        test.add(512);
+        test.add(1024);
+        test.add(2048);
         System.out.println(test.toString());
-
+        System.out.println("\nTesting remove...");
+        test.remove(3);
+        test.remove(4);
+        System.out.println(test.toString());
+        System.out.println("\nTesting add at index...");
+        test.add(4096, 10);
+        test.add(8192, 20);
+        System.out.println(test.toString());    
     }//end main
-        
+
 }//end class
