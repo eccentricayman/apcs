@@ -7,7 +7,7 @@ HW#39 -- Array of Steel
 
 /*****************************
  * SKELETON for
- * class SuperArray --  A wrapper class for an array. 
+ * class SuperArray --  A wrapper class for an array.
  * Maintains functionality:
  *  access value at index
  *  overwrite value at index
@@ -28,7 +28,7 @@ public class SuperArray {
         //size of this instance of SuperArray
     private int _size;
 
-        
+
         //~~~~~METHODS~~~~~
     //default constructor that initializes 10-item array
     public SuperArray() {
@@ -37,7 +37,7 @@ public class SuperArray {
         _size = 0;
     }
 
-        
+
     //output array in [a,b,c] format, eg
     // {1,2,3}.toString() -> "[1,2,3]"
     public String toString() {
@@ -51,24 +51,24 @@ public class SuperArray {
         return retstr;
     }
 
-        
+
     //double capacity of this SuperArray
     private void expand() {
         int[] tmp = new int[_data.length * 2];
         for (int i = 0 ; i < _data.length ; i++) {
             tmp[i] = _data[i];
-        }      
+        }
         _data = tmp;
     }
 
-        
+
     //accessor -- return value at specified index
     public int get( int index ) {
         return _data[index];
     }
 
-        
-    //mutator -- set value at index to newVal, 
+
+    //mutator -- set value at index to newVal,
     //           return old value at index
     public int set( int index, int newVal ) {
         int old = _data[index];
@@ -100,5 +100,5 @@ public class SuperArray {
         System.out.println(test.toString());
 
     }//end main
-        
+
 }//end class
