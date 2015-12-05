@@ -112,7 +112,7 @@ public class SuperArray implements ListInt {
         }
     }
 
-    public voidg remove(int index) {
+    public void remove(int index) {
         for (int i = index ; i < _lastPos ; i++) { //starts loop at deleted index
             set(i, set(i + 1, _data[i])); 
         }
@@ -157,7 +157,9 @@ public class SuperArray implements ListInt {
         test.add(4096, 10);
         test.add(8192, 20);
         System.out.println(test.toString());   
-        System.out.println("\nNow testing ListInt's methods...");
+        System.out.println("\n--------------------------------");
+        System.out.println("Now testing ListInt's methods...");
+        System.out.println("--------------------------------");
         ListInt ltest = new SuperArray();
         System.out.println("\nTesting add...");
         ltest.add(128);
