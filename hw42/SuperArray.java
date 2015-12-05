@@ -16,7 +16,7 @@ HW#42 -- <STUF>
  *  ability to print meaningfully
  *****************************/
 
-public class SuperArray {
+public class SuperArray implements ListInt {
 
         //~~~~~INSTANCE VARS~~~~~
         //underlying container, or "core" of this data structure:
@@ -112,14 +112,12 @@ public class SuperArray {
         }
     }
 
-    public int remove(int index) {
-        int temp = _data[index];
+    public voidg remove(int index) {
         for (int i = index ; i < _lastPos ; i++) { //starts loop at deleted index
             set(i, set(i + 1, _data[i])); 
         }
         _size -= 1;
         _lastPos -= 1;
-        return temp;
     }
 
     //main method for testing
@@ -158,7 +156,24 @@ public class SuperArray {
         System.out.println("\nTesting add at index...");
         test.add(4096, 10);
         test.add(8192, 20);
-        System.out.println(test.toString());    
+        System.out.println(test.toString());   
+        System.out.println("\nNow testing ListInt's methods...");
+        ListInt ltest = new SuperArray();
+        System.out.println("\nTesting add...");
+        ltest.add(128);
+        ltest.add(256);
+        ltest.add(512);
+        ltest.add(1024);
+        ltest.add(2048);
+        System.out.println(ltest.toString());
+        System.out.println("\nTesting remove...");
+        ltest.remove(3);
+        ltest.remove(4);
+        System.out.println(ltest.toString());
+        System.out.println("\nTesting add at index...");
+        ltest.add(4096, 10);
+        ltest.add(8192, 20);
+        System.out.println(ltest.toString()); 
     }//end main
 
 }//end class

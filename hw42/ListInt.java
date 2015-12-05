@@ -15,4 +15,8 @@ public interface ListInt {
     
     int size(); //weeeeeeeeeeeeeee weeeeeeeeeeeeeeeeee bob the build can we build it bob the builder yes we can!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     
+    int get(int index);
+
+    int set(int index, int newVal);
+
 }
