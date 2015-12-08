@@ -143,12 +143,7 @@ public class Binary {
       =============================================*/
     public boolean equals( Object other ) {
     	Binary otherbin = (Binary)(other);
-    	if (this.compareTo(otherbin) == 0) {
-    		return true;
-    	}
-    	else {
-    		return false;
-    	}
+    	return )this.compareTo(otherbin) == 0)
     }
 
     /*=============================================
@@ -159,16 +154,7 @@ public class Binary {
       =============================================*/
     public int compareTo( Object other ) {
     	Binary otherbin = (Binary)(other);
-    	int dif = this._decNum - otherbin._decNum;
-    	if (dif > 0) {
-    		return 1;
-    	}
-    	else if (dif == 0) {
-    		return 0;
-    	}
-    	else {
-    		return -1;
-    	}
+    	return this._decNum - otherbin._decNum;
     }
 
     //main method for testing
