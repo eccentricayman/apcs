@@ -1,7 +1,7 @@
 /*
 Ayman Ahmed
 APCS1 pd5
-HW#43 -- topkek
+HW#43 -- This or That
 2015-12-07
 */
 
@@ -12,16 +12,15 @@ public class Binary {
     private int _decNum;
     private String _binNum;
 
-
     /*=====================================
       default constructor
       pre:  n/a
       post: initializes _decNum to 0, _binNum to "0"
       =====================================*/
-    public Binary() { 
-	/****** YOUR IMPLEMENTATION HURRR ******/   
+    public Binary() {
+    	_decNum = 0;
+    	_binNum = "0";
     }
-
 
     /*=====================================
       overloaded constructor
@@ -29,9 +28,9 @@ public class Binary {
       post: sets _decNum to n, _binNum to equiv string of bits
       =====================================*/
     public Binary( int n ) {
-	/****** YOUR IMPLEMENTATION HURRR ******/   
+    	_decNum = n;
+    	_binNum = decToBin(n);
     }
-
 
     /*=====================================
       overloaded constructor
@@ -39,19 +38,18 @@ public class Binary {
       post: sets _binNum to input, _decNum to decimal equiv
       =====================================*/
     public Binary( String s ) {
-	/****** YOUR IMPLEMENTATION HURRR ******/   
+    	_decNum = (int)(Float.parseFloat(binToDec(s)));
+		_binNum = s;    	
     }
-
 
     /*=====================================
       String toString() -- returns String representation of this Object
       pre:  n/a
       post: returns String of 1's and 0's representing value of this Object
       =====================================*/
-    public String toString() { 
-	/****** YOUR IMPLEMENTATION HURRR ******/   
+    public String toString() {
+		return ("Decimal: " + _decNum + "\n" + "Binary: " + _binNum + "\n");
     }
-
 
     /*=====================================
       String decToBin(int) -- converts base-10 input to binary
@@ -64,9 +62,15 @@ public class Binary {
       decToBin(14) -> "1110"
       =====================================*/
     public static String decToBin( int n ) {
-	/****** YOUR IMPLEMENTATION HURRR ******/   
+    	int r = 0;
+    	String ret = "";
+    	while (n != 0) {
+    		r = n % 2;
+    		n /= 2;
+    		ret = r + ret;
+    	}
+    	return ret;
     }
-
 
     /*=====================================
       String decToBinR(int) -- converts base-10 input to binary, recursively
@@ -78,10 +82,20 @@ public class Binary {
       decToBinR(3) -> "11"
       decToBinR(14) -> "1110"
       =====================================*/
-    public static String decToBinR( int n ) { 
-	/****** YOUR IMPLEMENTATION HURRR ******/   
+
+    public static String decToBinR( int n ) {
+    	return decToBinR(n, "");
     }
 
+    public static String decToBinR(int n, String decret) {
+    	if (n == 0) {
+    		return decret;
+    	}
+    	else {
+    		String newdecret = (n % 2) + decret;
+    		return decToBinR(n / 2, newdecret);
+    	}
+    }
 
     /*=====================================
       String binToDec(String) -- converts base-10 input to binary
@@ -95,9 +109,12 @@ public class Binary {
       binToDec("1110") -> 14
       =====================================*/
     public static String binToDec( String s ) {
-	/****** YOUR IMPLEMENTATION HURRR ******/   
+    	String retstr = "";
+    	for (int i = 0 ; i < s.length() ; i++) {
+    		retstr += Integer.parseInt(s.substring(i, i + 1)) * Math.pow(2, s.length() - i - 1);
+    	}
+    	return retstr;  
     }
-
 
     /*=====================================
       String binToDecR(String) -- converts base-10 input to binary, recursively
@@ -110,10 +127,18 @@ public class Binary {
       binToDecR("11") -> 3
       binToDecR("1110") -> 14
       =====================================*/
-    public static String binToDecR( String s ) { 
-	/****** YOUR IMPLEMENTATION HURRR ******/   
+    public static String binToDecR( String s ) {
+    	return binToDecR(s, 0);
     }
 
+    public static String binToDecR(String s, int index) {
+    	if (s.length() == 0) {
+    		return "";
+    	}
+    	else {
+			return Integer.parseInt(s.substring(index, index + 1)) * Math.pow(2, s.length() - index - 1) + binToDecR(s.substring(index + 1));
+    	}
+    }
 
     /*=============================================
       boolean equals(Object) -- tells whether 2 Objs are equivalent
@@ -121,10 +146,15 @@ public class Binary {
       post: Returns true if this and other are aliases (pointers to same 
       Object), or if this and other represent equal binary values
       =============================================*/
-    public boolean equals( Object other ) { 
-	/****** YOUR IMPLEMENTATION HURRR ******/   
+    public boolean equals( Object other ) {
+    	Binary otherbin = (Binary)(other);
+    	if (this.compareTo(otherbin) == 0) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
     }
-
 
     /*=============================================
       int compareTo(Object) -- tells which of two Binary objects is greater
@@ -133,14 +163,22 @@ public class Binary {
       negative integer if this<input, positive integer otherwise
       =============================================*/
     public int compareTo( Object other ) {
-	/****** YOUR IMPLEMENTATION HURRR ******/   
+    	Binary otherbin = (Binary)(other);
+    	int dif = this._decNum - otherbin._decNum;
+    	if (dif > 0) {
+    		return 1;
+    	}
+    	else if (dif == 0) {
+    		return 0;
+    	}
+    	else {
+    		return -1;
+    	}
     }
-
 
     //main method for testing
     public static void main( String[] args ) {
 
-	/*=========================================
 	System.out.println();
 	System.out.println( "Testing ..." );
 
@@ -170,7 +208,7 @@ public class Binary {
 	System.out.println( b1.compareTo(b3) ); //should be 0
 	System.out.println( b1.compareTo(b4) ); //should be neg
 	System.out.println( b4.compareTo(b1) ); //should be pos
-	  =========================================*/
+
     }//end main()
 
 } //end class
