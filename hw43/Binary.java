@@ -38,8 +38,8 @@ public class Binary {
       post: sets _binNum to input, _decNum to decimal equiv
       =====================================*/
     public Binary( String s ) {
-    	_decNum = (int)(Float.parseFloat(binToDec(s)));
-		_binNum = s;    	
+    	_decNum = binToDec(s); //used because 
+		  _binNum = s;    	
     }
 
     /*=====================================
@@ -48,7 +48,7 @@ public class Binary {
       post: returns String of 1's and 0's representing value of this Object
       =====================================*/
     public String toString() {
-		return ("Decimal: " + _decNum + "\n" + "Binary: " + _binNum + "\n");
+		return _binNum;
     }
 
     /*=====================================
@@ -84,17 +84,12 @@ public class Binary {
       =====================================*/
 
     public static String decToBinR( int n ) {
-    	return decToBinR(n, "");
-    }
-
-    public static String decToBinR(int n, String decret) {
-    	if (n == 0) {
-    		return decret;
-    	}
-    	else {
-    		String newdecret = (n % 2) + decret;
-    		return decToBinR(n / 2, newdecret);
-    	}
+      if (n == 0){ //recursive case
+        return "";
+      }
+      else{ //recursive case
+        return decToBinR(n / 2) + (n % 2);
+      }
     }
 
     /*=====================================
@@ -108,12 +103,12 @@ public class Binary {
       binToDec("11") -> 3
       binToDec("1110") -> 14
       =====================================*/
-    public static String binToDec( String s ) {
-    	String retstr = "";
+    public static int binToDec( String s ) {
+    	int retInt = 0;
     	for (int i = 0 ; i < s.length() ; i++) {
-    		retstr += Integer.parseInt(s.substring(i, i + 1)) * Math.pow(2, s.length() - i - 1);
+    		retInt += Integer.parseInt(s.substring(i, i + 1)) * Math.pow(2, s.length() - i - 1);
     	}
-    	return retstr;  
+    	return retInt;  
     }
 
     /*=====================================
