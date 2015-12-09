@@ -29,7 +29,7 @@ public class Binary {
       =====================================*/
     public Binary( int n ) {
     	_decNum = n;
-    	_binNum = decToBin(n);
+    	_binNum = decToBinR(n);
     }
 
     /*=====================================
@@ -38,7 +38,7 @@ public class Binary {
       post: sets _binNum to input, _decNum to decimal equiv
       =====================================*/
     public Binary( String s ) {
-    	_decNum = binToDec(s); //used because 
+    	_decNum = binToDecR(s); //used because 
 		  _binNum = s;    	
     }
 
@@ -122,16 +122,13 @@ public class Binary {
       binToDecR("11") -> 3
       binToDecR("1110") -> 14
       =====================================*/
-    public static String binToDecR( String s ) {
-    	return binToDecR(s, 0);
-    }
-
-    public static String binToDecR(String s, int index) {
+    public static int binToDecR(String s) {
     	if (s.length() == 0) {
-    		return "";
+    		return 0;
     	}
     	else {
-			return Integer.parseInt(s.substring(index, index + 1)) * Math.pow(2, s.length() - index - 1) + binToDecR(s.substring(index + 1));
+			return Integer.parseInt(s.substring(0,1)) * (int)Math.pow(2, s.length() - 1) //value of this digit
+			+ binToDecR(s.substring(1)); //value of rest of digits
     	}
     }
 
@@ -143,7 +140,7 @@ public class Binary {
       =============================================*/
     public boolean equals( Object other ) {
     	Binary otherbin = (Binary)(other);
-    	return )this.compareTo(otherbin) == 0)
+    	return (this.compareTo(otherbin) == 0);
     }
 
     /*=============================================
