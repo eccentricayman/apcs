@@ -143,7 +143,7 @@ public class Binary {
       =============================================*/
     public boolean equals( Object other ) {
     	Binary otherbin = (Binary)(other);
-    	return )this.compareTo(otherbin) == 0)
+    	return (this.compareTo(otherbin) == 0);
     }
 
     /*=============================================
