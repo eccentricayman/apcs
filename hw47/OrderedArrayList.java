@@ -55,12 +55,16 @@ public class OrderedArrayList {
     // maintains ascending order of elements
     // uses a linear search to find appropriate index
     public void addLinear( Comparable newVal ) { 
+    	int breaker = 1;
 		if (_data.size() == 0) {
 		    _data.add(newVal);
 		}
 		else {
-		    for (int i = 0 ; i < _data.size() ; i++) {
-				_data.add(i, newVal);
+		    for (int i = 0 ; i < _data.size() && breaker != 0 ; i++) {
+		    	if (_data.get(i).compareTo(newVal) >= 0) {
+		    		_data.add(i, newVal);
+		    		breaker = 0;
+		    	}
 		    }
 		}
     }
