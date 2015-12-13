@@ -1,7 +1,7 @@
 /*
   Ayman Ahmed
   APCS1 pd5
-  HW#47 --
+  HW#47 -- Halving the Halves
   2015-12-11
 */
 
@@ -28,13 +28,12 @@ public class OrderedArrayList {
 	_data = new ArrayList<Comparable>();
     }
 
-
+    
     public String toString() { 
 	return _data.toString();
     }
 
-
-    public Comparable rempove( int index ) { 
+    public Comparable remove( int index ) { 
 	Comparable temp = _data.get(index);
 	_data.remove(index);
 	return temp;
@@ -66,13 +65,46 @@ public class OrderedArrayList {
 	    }
 	}
     }
-    
-    public void addBinary(Comparable newVal) {
+
+    public int searchBinary(Comparable target) {
 	int lo = 0;
-	int med = 0;
-	int hi = _data.size() - 1;
-	//todo
+	int hi = this.size() - 1;
+	int med = (hi + lo) / 2;
+	int breaker = 1; //used to break the while
+	while (breaker != 0) {
+	    if (this.get(med).compareTo(target) > 0) {
+		lo = med + 1;
+	    }
+	    else if (this.get(med).compareTo(target) < 0) {
+		hi = med - 1;
+	    }
+	    else {
+		breaker = 0;
+	    }
+	    if (lo > hi) {
+		breaker = 0;
+	    }
+	    else {
+		med = (hi + lo) / 2;
+	    }
+	}
+	if (lo <= hi) {
+	    return med;
+	}
+	else {
+	    return lo;
+	}
     }
+	
+    public void addBinary(Comparable newVal) {
+	if (_data.size() == 0) {
+	    _data.add(newVal);
+	}
+	else {
+	    _data.add(searchBinary(newVal), newVal);
+	}
+    }
+    
     public static void main( String[] args ) {
 
 	OrderedArrayList Franz = new OrderedArrayList();
@@ -85,11 +117,15 @@ public class OrderedArrayList {
 	    System.out.println( valToAdd );
 	    Franz.addLinear( valToAdd );
 	}
-
 	System.out.println("\nafter population via addLinear() calls:");
 	System.out.println( Franz );
 	System.out.println();
-
+	System.out.println("Clearing Franz and testing Binary...");
+	Franz = new OrderedArrayList();
+	for (int i = 0 ; i < 15 ; i++) {
+	    Franz.addBinary(i);
+	}
+	System.out.println(Franz);
     }
 
 }//end class OrderedArrayList
