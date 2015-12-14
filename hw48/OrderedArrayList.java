@@ -1,9 +1,10 @@
 /*
-  Ayman Ahmed
-  APCS1 pd5
-  HW#47 -- Halving the Halves
-  2015-12-11
+Ayman Ahmed
+APCS1 pd5
+HW#48 -- Half(l)ing Time Trials
+2015-12-14
 */
+
 
 /*============================================
   class OrderedArrayList
