@@ -1,8 +1,8 @@
 /*
-Ayman Ahmed
-APCS1 pd5
-HW#48 -- Half(l)ing Time Trials
-2015-12-14
+  Ayman Ahmed
+  APCS1 pd5
+  HW#48 -- Half(l)ing Time Trials
+  2015-12-14
 */
 
 
@@ -70,45 +70,50 @@ public class OrderedArrayList {
         }
     }
 
-    public int searchBinary(Comparable target) {
+    public void addBinary( Comparable newVal ) { 
+        //initialize upperbound, lowerbound and median
+        int lo = 0;
+        int med = 0;
+        int hi = _data.size()-1;
+
+        while ( lo <= hi ) { //running until target is found or bounds cross
+
+            med = (lo + hi) / 2;
+            int x = _data.get(med).compareTo( newVal );
+	        
+            if ( x == 0 ) { //equal value found, insert here
+                _data.add( med, newVal );
+                return;
+            }
+            else if ( x > 0 ) //newVal < med, so look at lower half of data
+                hi = med - 1;
+            else //newVal > med, so look at upper half of data
+                lo = med + 1;
+        }
+        // If you make it this far, newVal was not in the ArrayList.
+        // So insert at lo. Q: How do you know lo is correct insertion index?
+        _data.add( lo, newVal );
+    }	
+
+    public boolean findLin(Comparable target) {
+        long start = System.currentTimeMillis();
+        for (int i = 0 ; i < _data.size() ; i++) {
+            if (_data.get(i).compareTo(target) == 0) {
+                return true;
+            }
+        }
+        long end = System.currentTimeMillis();
+        long time = end - start;
+        System.out.println(time);
+        return false;
+    }
+
+    public boolean findBin(Comparable target) {
+        long start = System.currentTimeMillis();
         int lo = 0;
         int hi = this.size() - 1;
         int med = (hi + lo) / 2;
-        int breaker = 1; //used to break the while
-        while (breaker != 0) {
-            if (this.get(med).compareTo(target) >= 0) {
-                //lo = med + 1;
-                hi = med - 1;
-            }
-            else if (this.get(med).compareTo(target) <= 0) {
-                //hi = med - 1;
-                lo = med + 1;
-            }
-            else {
-                breaker = 0;
-            }
-            if (lo > hi) {
-                breaker = 0;
-            }
-            else {
-                med = (hi + lo) / 2;
-            }
-        }
-        if (lo <= hi) {
-            return med;
-        }
-        else {
-            return lo;
-        }
-    }
-	
-    public void addBinary(Comparable newVal) {
-        if (_data.size() == 0) {
-            _data.add(newVal);
-        }
-        else {
-            _data.add(searchBinary(newVal), newVal);
-        }
+        
     }
     
     public static void main( String[] args ) {
