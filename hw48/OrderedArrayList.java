@@ -1,5 +1,5 @@
 /*
-  Ayman Ahmed
+  Team Ain't Nobody Got Time Fo Dat -- Ayman Ahmed, Jason Dong, Dorothy Ng
   APCS1 pd5
   HW#48 -- Half(l)ing Time Trials
   2015-12-14
