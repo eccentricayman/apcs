@@ -96,24 +96,31 @@ public class OrderedArrayList {
     }	
 
     public boolean findLin(Comparable target) {
-        long start = System.currentTimeMillis();
         for (int i = 0 ; i < _data.size() ; i++) {
             if (_data.get(i).compareTo(target) == 0) {
                 return true;
             }
         }
-        long end = System.currentTimeMillis();
-        long time = end - start;
-        System.out.println(time);
         return false;
     }
 
     public boolean findBin(Comparable target) {
-        long start = System.currentTimeMillis();
         int lo = 0;
         int hi = this.size() - 1;
         int med = (hi + lo) / 2;
-        
+        while ( lo <= hi ) { //running until target is found or bounds cross
+            med = (lo + hi) / 2;
+            int x = _data.get(med).compareTo(target);
+            if ( x == 0 ) { //equal value found, insert here
+                _data.add( med, target );
+                return true;
+            }
+            else if ( x > 0 ) //newVal < med, so look at lower half of data
+                hi = med - 1;
+            else //newVal > med, so look at upper half of data
+                lo = med + 1;
+        }
+        return false;
     }
     
     public static void main( String[] args ) {
@@ -131,12 +138,41 @@ public class OrderedArrayList {
         System.out.println("\nafter population via addLinear() calls:");
         System.out.println( Franz );
         System.out.println();
-        System.out.println("Clearing Franz and testing Binary...");
+        System.out.println("\nClearing Franz and testing Binary...");
         Franz = new OrderedArrayList();
         for (int i = 0 ; i < 15 ; i++) {
             Franz.addBinary(i);
         }
         System.out.println(Franz);
+        System.out.println("\nTesting time of find with multiple runs on a short arraylist with findLin...");
+        long start = System.currentTimeMillis();
+        for (int i = 0 ; i < 1000000 ; i++) {
+            Franz.findLin(999);
+        }
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
+        System.out.println("\nTesting time of find with multiple runs on a short arraylist with findBin...");
+        start = System.currentTimeMillis();
+        for (int i = 0 ; i < 1000000 ; i++) {
+            Franz.findBin(14);
+        }
+        end = System.currentTimeMillis();
+        System.out.println(end - start);
+        System.out.println("\nTesting time of find with a long array, making large arraylist now...");
+        Franz = new OrderedArrayList();
+        for (int i = 0 ; i < 10000000 ; i++) {
+            Franz.addLinear(i);
+        }
+        System.out.println("\nNow testing findLin time on large arraylist...");
+        start = System.currentTimeMillis();
+        Franz.findLin(99999);
+        end = System.currentTimeMillis();
+        System.out.println(end - start);
+        System.out.println("\nNow testing findBin time on large arraylist...");
+        start = System.currentTimeMillis();
+        Franz.findBin(99999);
+        end = System.currentTimeMillis();
+        System.out.println(end - start);
     }
 
 }//end class OrderedArrayList
