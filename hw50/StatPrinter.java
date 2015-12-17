@@ -69,7 +69,7 @@ public class StatPrinter {
             _frequency.set(i, _frequency.get(i) + 1);
         }
     }//O(?) 
-
+    
 
     //*************** QUESTION 01 **************************
     //precond:  data.size() > 0
