@@ -52,7 +52,6 @@ public class StatPrinter {
     // instance variable for frequencies of each integer in input ArrayList
     private ArrayList <Integer> _frequency;
 
-
     //*************** QUESTION 02 **************************
     //precond:  data.size() > 0, each entry b/t 0,100 inclusive
     //postcond: _frequency.size() set to max(data) + 1
@@ -68,7 +67,7 @@ public class StatPrinter {
         for (int i = 0 ; i < _frequency.size() ; i++) {
             _frequency.set(i, _frequency.get(i) + 1);
         }
-    }//O(?) 
+    }//O(?) linear
     
 
     //*************** QUESTION 01 **************************
@@ -82,7 +81,7 @@ public class StatPrinter {
             }
         }
         return max;
-    }//O(?)
+    }//O(?) linear
 
 
     //*************** QUESTION 03 **************************
@@ -107,7 +106,7 @@ public class StatPrinter {
                 return false;
             }
         }
-    }//O(?)
+    }//O(?) constant time
 
 
     //*************** QUESTION 04 **************************
@@ -120,7 +119,7 @@ public class StatPrinter {
             }
         }
         return retlist;
-    }//O(?)
+    }//O(?) linear
 
 
     //*************** QUESTION 05 **************************
@@ -140,7 +139,7 @@ public class StatPrinter {
             histogram += "\n";
         }
         System.out.println(histogram);
-    }//OUT(?)
+    }//OUT(?) n^2
 
     public static void main(String[] args) {
         System.out.println("Rest assured this was throughly tested");
