@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
   Team Ain't Nobody Got Time Fo Dat -- Ayman Ahmed, Jason Dong, Dorothy Ng
   APCS1 pd5
@@ -13,6 +14,10 @@
   must remain sorted in ascending order
   ============================================*/
 
+=======
+
+
+>>>>>>> 9df578e25f39abc84ad40c4b4fc6de18672dfaf2
 //ArrayList's implementation is in the java.util package
 import java.util.ArrayList;
 
@@ -25,11 +30,16 @@ public class OrderedArrayList {
 
     // default constructor initializes instance variable _data
     public OrderedArrayList() {
+<<<<<<< HEAD
         _data = new ArrayList<Comparable>();
+=======
+		_data = new ArrayList<Comparable>();
+>>>>>>> 9df578e25f39abc84ad40c4b4fc6de18672dfaf2
     }
 
     
     public String toString() { 
+<<<<<<< HEAD
         return _data.toString();
     }
 
@@ -37,16 +47,33 @@ public class OrderedArrayList {
         Comparable temp = _data.get(index);
         _data.remove(index);
         return temp;
+=======
+		return _data.toString();
+    }
+
+    public Comparable remove( int index ) { 
+		Comparable temp = _data.get(index);
+		_data.remove(index);
+		return temp;
+>>>>>>> 9df578e25f39abc84ad40c4b4fc6de18672dfaf2
     }
 
 
     public int size() { 
+<<<<<<< HEAD
         return _data.size();
+=======
+		return _data.size();
+>>>>>>> 9df578e25f39abc84ad40c4b4fc6de18672dfaf2
     }
 
 	
     public Comparable get( int index ) { 
+<<<<<<< HEAD
         return _data.get(index);
+=======
+		return _data.get(index);
+>>>>>>> 9df578e25f39abc84ad40c4b4fc6de18672dfaf2
     }
 
 
@@ -57,6 +84,7 @@ public class OrderedArrayList {
     // uses a linear search to find appropriate index
     public void addLinear( Comparable newVal ) { 
     	int breaker = 1;
+<<<<<<< HEAD
         if (_data.size() == 0) {
             _data.add(newVal);
         }
@@ -121,10 +149,63 @@ public class OrderedArrayList {
                 lo = med + 1;
         }
         return false;
+=======
+		if (_data.size() == 0) {
+		    _data.add(newVal);
+		}
+		else {
+		    for (int i = 0 ; i < _data.size() && breaker != 0 ; i++) {
+		    	if (_data.get(i).compareTo(newVal) >= 0) {
+		    		_data.add(i, newVal);
+		    		breaker = 0;
+		    	}
+		    }
+		}
+    }
+
+    public int searchBinary(Comparable target) {
+		int lo = 0;
+		int hi = this.size() - 1;
+		int med = (hi + lo) / 2;
+		int breaker = 1; //used to break the while
+		while (breaker != 0) {
+		    if (this.get(med).compareTo(target) > 0) {
+				lo = med + 1;
+		    }
+		    else if (this.get(med).compareTo(target) < 0) {
+				hi = med - 1;
+		    }
+		    else {
+				breaker = 0;
+		    }
+		    if (lo > hi) {
+				breaker = 0;
+		    }
+		    else {
+				med = (hi + lo) / 2;
+		    }
+		}
+		if (lo <= hi) {
+		    return med;
+		}
+		else {
+		    return lo;
+		}
+    }
+	
+    public void addBinary(Comparable newVal) {
+		if (_data.size() == 0) {
+	  	  _data.add(newVal);
+		}
+		else {
+		    _data.add(searchBinary(newVal), newVal);
+		}
+>>>>>>> 9df578e25f39abc84ad40c4b4fc6de18672dfaf2
     }
     
     public static void main( String[] args ) {
 
+<<<<<<< HEAD
         OrderedArrayList Franz = new OrderedArrayList();
 
         System.out.println("\nValues to add via addLinear() calls:");
@@ -173,6 +254,27 @@ public class OrderedArrayList {
         Franz.findBin(99999);
         end = System.currentTimeMillis();
         System.out.println(end - start);
+=======
+		OrderedArrayList Franz = new OrderedArrayList();
+
+		System.out.println("\nValues to add via addLinear() calls:");
+
+		// testing linear search
+		for( int i = 0; i < 15; i++ ) {
+		    int valToAdd = (int)( 50 * Math.random() );
+		    System.out.println( valToAdd );
+		    Franz.addLinear( valToAdd );
+		}
+		System.out.println("\nafter population via addLinear() calls:");
+		System.out.println( Franz );
+		System.out.println();
+		System.out.println("Clearing Franz and testing Binary...");
+		Franz = new OrderedArrayList();
+		for (int i = 0 ; i < 15 ; i++) {
+		    Franz.addBinary(i);
+		}
+		System.out.println(Franz);
+>>>>>>> 9df578e25f39abc84ad40c4b4fc6de18672dfaf2
     }
 
 }//end class OrderedArrayList
