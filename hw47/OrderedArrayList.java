@@ -24,28 +24,28 @@ public class OrderedArrayList {
 
     // default constructor initializes instance variable _data
     public OrderedArrayList() {
-		_data = new ArrayList<Comparable>();
+        _data = new ArrayList<Comparable>();
     }
 
     
     public String toString() { 
-		return _data.toString();
+        return _data.toString();
     }
 
     public Comparable remove( int index ) { 
-		Comparable temp = _data.get(index);
-		_data.remove(index);
-		return temp;
+        Comparable temp = _data.get(index);
+        _data.remove(index);
+        return temp;
     }
 
 
     public int size() { 
-		return _data.size();
+        return _data.size();
     }
 
 	
     public Comparable get( int index ) { 
-		return _data.get(index);
+        return _data.get(index);
     }
 
 
@@ -56,79 +56,81 @@ public class OrderedArrayList {
     // uses a linear search to find appropriate index
     public void addLinear( Comparable newVal ) { 
     	int breaker = 1;
-		if (_data.size() == 0) {
-		    _data.add(newVal);
-		}
-		else {
-		    for (int i = 0 ; i < _data.size() && breaker != 0 ; i++) {
-		    	if (_data.get(i).compareTo(newVal) >= 0) {
-		    		_data.add(i, newVal);
-		    		breaker = 0;
-		    	}
-		    }
-		}
+        if (_data.size() == 0) {
+            _data.add(newVal);
+        }
+        else {
+            for (int i = 0 ; i < _data.size() && breaker != 0 ; i++) {
+                if (_data.get(i).compareTo(newVal) >= 0) {
+                    _data.add(i, newVal);
+                    breaker = 0;
+                }
+            }
+        }
     }
 
     public int searchBinary(Comparable target) {
-		int lo = 0;
-		int hi = this.size() - 1;
-		int med = (hi + lo) / 2;
-		int breaker = 1; //used to break the while
-		while (breaker != 0) {
-		    if (this.get(med).compareTo(target) > 0) {
-				lo = med + 1;
-		    }
-		    else if (this.get(med).compareTo(target) < 0) {
-				hi = med - 1;
-		    }
-		    else {
-				breaker = 0;
-		    }
-		    if (lo > hi) {
-				breaker = 0;
-		    }
-		    else {
-				med = (hi + lo) / 2;
-		    }
-		}
-		if (lo <= hi) {
-		    return med;
-		}
-		else {
-		    return lo;
-		}
+        int lo = 0;
+        int hi = this.size() - 1;
+        int med = (hi + lo) / 2;
+        int breaker = 1; //used to break the while
+        while (breaker != 0) {
+            if (this.get(med).compareTo(target) >= 0) {
+                //lo = med + 1;
+                hi = med - 1;
+            }
+            else if (this.get(med).compareTo(target) <= 0) {
+                //hi = med - 1;
+                lo = med + 1;
+            }
+            else {
+                breaker = 0;
+            }
+            if (lo > hi) {
+                breaker = 0;
+            }
+            else {
+                med = (hi + lo) / 2;
+            }
+        }
+        if (lo <= hi) {
+            return med;
+        }
+        else {
+            return lo;
+        }
     }
 	
     public void addBinary(Comparable newVal) {
-		if (_data.size() == 0) {
-	  	  _data.add(newVal);
-		}
-		else {
-		    _data.add(searchBinary(newVal), newVal);
-		}
+        if (_data.size() == 0) {
+            _data.add(newVal);
+        }
+        else {
+            _data.add(searchBinary(newVal), newVal);
+        }
     }
     
     public static void main( String[] args ) {
 
-		OrderedArrayList Franz = new OrderedArrayList();
+        OrderedArrayList Franz = new OrderedArrayList();
 
-		System.out.println("\nValues to add via addLinear() calls:");
+        System.out.println("\nValues to add via addLinear() calls:");
 
-		// testing linear search
-		for( int i = 0; i < 15; i++ ) {
-		    int valToAdd = (int)( 50 * Math.random() );
-		    System.out.println( valToAdd );
-		    Franz.addLinear( valToAdd );
-		}
-		System.out.println("\nafter population via addLinear() calls:");
-		System.out.println( Franz );
-		System.out.println();
-		System.out.println("Clearing Franz and testing Binary...");
-		Franz = new OrderedArrayList();
-		for (int i = 0 ; i < 15 ; i++) {
-		    Franz.addBinary(i);
-		}
-		System.out.println(Franz);
+        // testing linear search
+        for( int i = 0; i < 15; i++ ) {
+            int valToAdd = (int)( 50 * Math.random() );
+            System.out.println( valToAdd );
+            Franz.addLinear( valToAdd );
+        }
+        System.out.println("\nafter population via addLinear() calls:");
+        System.out.println( Franz );
+        System.out.println();
+        System.out.println("Clearing Franz and testing Binary...");
+        Franz = new OrderedArrayList();
+        for (int i = 0 ; i < 15 ; i++) {
+            Franz.addBinary(i);
+        }
+        System.out.println(Franz);
     }
 
 }//end class OrderedArrayList

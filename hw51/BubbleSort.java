@@ -46,18 +46,18 @@ public class BubbleSort {
     // Rearranges elements of input ArrayList
     // postcondition: data's elements sorted in ascending order
     public static void bubbleSortV( ArrayList<Comparable> data ) {
-		int pass = 0;
-		while (pass < data.size() - 1) {
-		    if (data.get(pass).compareTo(data.get(pass + 1)) > 0) {
+        int pass = 0;
+        while (pass < data.size() - 1) {
+            if (data.get(pass).compareTo(data.get(pass + 1)) > 0) {
                 Comparable swapped = data.get(pass);
                 data.set(pass, pass + 1);
                 data.set(pass + 1, swapped);
                 pass ++;
-		    }
-		    else {
-		    	pass++;
-		    }
-		}
+            }
+            else {
+                pass++;
+            }
+        }
     }//end bubbleSortV -- O(?)
 
 
@@ -65,20 +65,20 @@ public class BubbleSort {
     // postcondition: order of input ArrayList's elements unchanged
     //                Returns sorted copy of input ArrayList.
     public static ArrayList<Comparable> bubbleSort( ArrayList<Comparable> input ) {
-		int pass = 0;
-		ArrayList<Comparable> data = input;
-		while (pass < data.size() - 1) {
-		    if (data.get(pass).compareTo(data.get(pass + 1)) > 0) {
+        int pass = 0;
+        ArrayList<Comparable> data = input;
+        while (pass < data.size() - 1) {
+            if (data.get(pass).compareTo(data.get(pass + 1)) > 0) {
                 Comparable swapped = data.get(pass);
                 data.set(pass, pass + 1);
                 data.set(pass + 1, swapped);
                 pass ++;
-		    }
-		    else {
-		    	pass++;
-		    }
-		}
-		return data;
+            }
+            else {
+                pass++;
+            }
+        }
+        return data;
     }//end bubbleSort -- O(?)
 
 
