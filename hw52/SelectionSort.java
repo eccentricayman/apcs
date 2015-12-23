@@ -114,7 +114,7 @@ public class SelectionSort {
 	  + glenSorted );
 	  System.out.println( "ArrayList glen after sorting:\n" + glen );
 
-	  coco = pozpulate( 10, 1, 1000 );
+	  coco = populate( 10, 1, 1000 );
 	  System.out.println( "ArrayList coco before sorting:\n" + coco );
 	  ArrayList cocoSorted = selectionSort( coco );
 	  System.out.println( "sorted version of ArrayList coco:\n" 
