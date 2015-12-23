@@ -1,0 +1,8 @@
+Ayman Ahmed
+APCS1
+12/23/2015
+
+Aim: Reflect, look ahead
+
+Do Now: Best, worst case scenario for selection sort
+
