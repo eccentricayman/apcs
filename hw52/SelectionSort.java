@@ -39,19 +39,6 @@ public class SelectionSort {
     }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public static int min(ArrayList<Comparable> data) {
-    	Comparable currentmin = data.get(0);
-    	//min + index = mindex!
-    	int mindex = 0;
-    	for (int i = 0 ; i < data.size() ; i++) {
-    		if (data.get(i).compareTo(currentmin) < 0) {
-    			mindex = i;
-    			currentmin = data.get(i);
-    		}
-    	}
-    	return mindex;
-    }
-
     public static void swap(ArrayList<Comparable> data, int a, int b) {
 		data.set(a, data.set(b, data.get(a) ) );
     }
@@ -60,10 +47,16 @@ public class SelectionSort {
     // Rearranges elements of input ArrayList
     // postcondition: data's elements sorted in ascending order
     public static void selectionSortV( ArrayList<Comparable> data ) {
-        for (int i = 0; i < data.size(); i++) {
-		    int min = min(data);
-	    	swap(data, min, i);
-		}
+        for (int i = 0; i < data.size() - 1; i++) {
+            int index = i;
+            //gets minimum number in list
+            for (int j = i + 1; j < data.size(); j++) {
+                if (data.get(j).compareTo(data.get(index)) < 0) {
+                    index = j;
+                }
+            }
+            swap(data, index, i);
+        }
     }//end selectionSortV -- O(n^2)
     
 
@@ -71,12 +64,18 @@ public class SelectionSort {
     // postcondition: order of input ArrayList's elements unchanged
     //                Returns sorted copy of input ArrayList.
     public static ArrayList<Comparable> selectionSort( ArrayList<Comparable> input ) {
-		ArrayList<Comparable> retlist = input;
-        for (int i = 0; i < retlist.size(); i++) {
-		    int min = min(retlist);
-	    	swap(retlist, min, i);
-		}
-		return retlist;
+    	ArrayList<Comparable> data = input;
+    	for (int i = 0; i < data.size() - 1; i++) {
+    	    int index = i;
+    	    //gets minimum number in list
+    	    for (int j = i + 1; j < data.size(); j++) {
+    	        if (data.get(j).compareTo(data.get(index)) < 0) {
+    	            index = j;
+    	        }
+    	    }
+    	    swap(data, index, i);
+    	}
+    	return data;
     }//end selectionSort -- O(?)
 
 
