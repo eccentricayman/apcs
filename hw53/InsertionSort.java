@@ -16,6 +16,8 @@
 
 */
 
+import java.util.ArrayList;
+
 public class InsertionSort {
     //fills arraylist with random ints in a range
 	public static ArrayList populate( int size, int lo, int hi ) {
@@ -27,7 +29,7 @@ public class InsertionSort {
 		}
 		return retAL;
     }
-
+    
 	//randomly rearranges elements in ArrayList
 	public static void shuffle( ArrayList al ) {
 		int randomIndex;
@@ -39,12 +41,52 @@ public class InsertionSort {
     	}
     }
 
+    //selectionsort void
+    public static void selectionSortV( ArrayList<Comparable> data ) {
+        for (int i = 0; i < data.size() - 1; i++) {
+            int index = i;
+            //gets minimum number in list
+            for (int j = i + 1; j < data.size(); j++) {
+                if (data.get(j).compareTo(data.get(index)) < 0) {
+                    index = j;
+                }
+            }
+            swap(data, index, i);
+        }
+    }//end selectionSortV -- O(n^2)
+    
+
+    
+    //swaps two elements in an arraylist
+    public static void swap(ArrayList<Comparable> data, int a, int b) {
+		data.set(a, data.set(b, data.get(a) ) );
+    }
+
 	//void version of insertionsort
-	public static void isortV(Arraylist<Comparable> data) {
-		for (int i = 0 ; i < data.size() ; i++) {
-			for (int i2 = 0 ; i2 < data.size() - i ; i2++) {
-				if (data.get(i) <
-			}
-		}
+	public static void isortV(ArrayList<Comparable> data) {
+		for (int i = 1 ; i < data.size() ; i++) {
+            Comparable temp = data.get(i);
+            int x = i - 1;
+            while ((i > -1) && (data.get(i).compareTo(temp) > 0) ) {
+                data.set(i + 1, i);
+                i--;
+            }
+            data.set(i + 1, temp);
+        }
+	}
+
+    //arraylist returning version of insertionsort
+	public static ArrayList<Comparable> isort(ArrayList<Comparable> input) {
+        ArrayList<Comparable> data = input;
+		for (int i = 1 ; i < data.size() ; i++) {
+            Comparable temp = data.get(i);
+            int x = i - 1;
+            while ((i > -1) && (data.get(i).compareTo(temp) > 0) ) {
+                data.set(i + 1, i);
+                i--;
+            }
+            data.set(i + 1, temp);
+        }
+        return data;
 	}
 }
