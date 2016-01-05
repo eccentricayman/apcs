@@ -9,11 +9,12 @@
   Q1: Is more work done toward beginning or end of insertion sort? Why?
   - More work is done 
   Q2: For n items, how many passes are necessary to sort?
-  
+  n-1 passes.
   Q3: What is known after pass p, and how do you know it?
-  
+  That at least p elements are sorted, because it inserts p elements into
+  the right place.
   Q4: What is the runtime classification of this sort?
-
+    Linear runtime.
 */
 
 import java.util.ArrayList;
