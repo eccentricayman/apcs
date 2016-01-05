@@ -64,28 +64,34 @@ public class InsertionSort {
 
 	//void version of insertionsort
 	public static void isortV(ArrayList<Comparable> data) {
-		for (int i = 1 ; i < data.size() - 1 ; i++) {
-            Comparable temp = data.get(i);
-            int x = i - 1;
-            while ((i > -1) && (data.get(i).compareTo(temp) > 0) ) {
-                data.set(i + 1, i);
-                i--;
+        int i, j;
+        //i runs through arraylist, j is index of other
+        for (i = 1 ; i < data.size() ; i++) {
+            j = 0;
+            //if j is bigger than i, move to next index of j
+            while (i > j && (data.get(j).compareTo(data.get(i)) < 0)) {
+                j++;
             }
-            data.set(i + 1, temp);
+            //add comparable at j, remove the one above i
+            data.add(j, data.get(i));
+            data.remove(i + 1);
         }
 	}
 
     //arraylist returning version of insertionsort
 	public static ArrayList<Comparable> isort(ArrayList<Comparable> input) {
         ArrayList<Comparable> data = input;
-		for (int i = 1 ; i < data.size() - 1; i++) {
-            Comparable temp = data.get(i);
-            int x = i - 1;
-            while ((i > -1) && (data.get(i).compareTo(temp) > 0) ) {
-                data.set(i + 1, i);
-                i--;
+        int i, j;
+        //i runs through arraylist, j is index of other
+        for (i = 1 ; i < data.size() ; i++) {
+            j = 0;
+            //if j is bigger than i, move to next index of j
+            while (i > j && (data.get(j).compareTo(data.get(i)) < 0)) {
+                j++;
             }
-            data.set(i + 1, temp);
+            //add comparable at j, remove the one above i
+            data.add(j, data.get(i));
+            data.remove(i + 1);
         }
         return data;
 	}
