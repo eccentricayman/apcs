@@ -116,7 +116,7 @@ public class Matrix {
     	boolean allequal = true;
         for (int i = 1 ; i <= this.size() ; i++) {
         	for (int j = 1 ; j <= this.size() ; j++) {
-        		if (this.get(i, j) != ((Matrix)(rightSide)).get(i, j)) {
+        		if (this.get(i, j) != ((Matrix)(rightSide)).get(i, j) && this.size() == ((Matrix)(rightSide)).size()) {
         			allequal = false;
         		}
         	}
