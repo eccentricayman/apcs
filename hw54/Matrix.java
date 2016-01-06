@@ -102,9 +102,9 @@ public class Matrix {
             for (int k = 0 ; k <= addto.length() ; k++) {
             	seperator += "-";
             }
-            retstr += "\t\t" + seperator + seperator + "\n";
+            retstr += "\t\t\t" + seperator + seperator + "\n";
         }
-        retstr = "\t\t" + seperator + "\n" + retstr;
+        retstr = "\t\t\t" + seperator + "\n" + retstr;
         //to bypass the weird length problem
         return retstr.substring(0, retstr.length() - seperator.length());
 	}
