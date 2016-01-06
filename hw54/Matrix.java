@@ -55,17 +55,14 @@ public class Matrix {
     }
 
 
-    //return true if this matrix is empty, false otherwise
-    private boolean isEmpty() {
-    	boolean boolret = true;
-		for (int i = 0 ; i < this.size() ; i++) {
-			for (int j = 0 ; j < this.size() ; j++) {
-				if (this.matrix[i][j] != null) {
-					boolret = false;
-				}
-			}
-		}
-		return boolret;
+    //return true if index of matrix is empty, false otherwise
+    private boolean isEmpty(int r, int c) {
+        if (matrix[r - 1][c - 1] != null) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
 
