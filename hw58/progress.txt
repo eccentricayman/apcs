@@ -1,0 +1,59 @@
+/*
+    Ayman Ahmed
+    APCS1 pd5
+    HW58 -- Checking In
+    2016-23-1
+*/
+
+1. Obstacles Overcome
+An obstacle we overcame was managing which Positions would have Equips and
+which positions would have Chests, because at the time all we had was
+x coordinates and y coordinates. We came up with the idea of a class that
+manages a single position, which we implemented in Position.java. This meant
+we had to move code from the Player/Character/AI to their own java files,
+so that they could be objects that a Position could contain.
+
+2. Unresolved Issues
+A major obstacle that we have right now is how to display the board, because
+it is a diagonal of Positions, which are objects that can list the players
+on them and can contain special events such as Chests or Statchecks. 
+
+3. Cool Stuff Learned
+I learned that even though a 2D ArrayList can represent non-square based
+shapes, and multiple different ways to create a coordinate system; something
+I found out while searching for a way to make the Board. One example is
+using a single array of length * width size, and using y * w + x as the
+index to be able to find the number at a coordinate of (x, y). Another
+cool thing I learned was the use of \r, when I used it to make a progress
+bar that I will hopefully be able to implement within the project later
+on when the player is rolling or the AI are completing their turns.
+
+4. Mid - Development Design Changes
+We changed the design of just having the Character maintain x and y
+coordinates because it restricted us from placing events at certain
+Positions. It also restricted us from having a Board that managed all
+the Players, so we implemented Position.java. Another design change,
+though not in the middle of the project, was changing our idea. Our
+original idea was going to be a Mario game in Processing that was
+special because every time the player died they would have one of their
+files encrypted. Although I got partially into it, I mulled it over and
+ultimately decided it wasn't the best idea, because it's generally not
+good practice to mess with someone's files, even if it is a fun idea. Then
+Kevin came up with the idea of Mario Party + RPG and we went along with
+that.
+
+5. Lessons Learned
+I learned that it's usually always a good idea to write things out on paper,
+and to plan it out to a small degree beforehand. I find that extensive
+planning is usually not very efficient, but a short amount of time spent
+thinking and putting ideas on paper is definetely a good idea. Another
+thing I learned is that consistency with coding style is very important. If
+someone spaces out their code and keeps it organized instead of condensed, I
+find it much easier to read. An example of this is using the brackets in
+short if statements. Although they're not needed, they can help someone
+understand the code better. The last big thing I learned is that commenting
+code is important, but excessive commenting can hinder reading through code.
+The biggest thing is that every single part of the code should be commented.
+By that I mean each comment should be short, but should sufficiently explain
+a certain section of code; there should be no part in the code that isn't
+partially covered by one comment or another.
