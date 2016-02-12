@@ -17,13 +17,7 @@ public class heading {
                 period = Integer.parseInt(headingreader.readLine());
                 System.out.print("Enter HW number: ");
                 hwnum = userin.nextInt();
-		boolean success = false;
-		if (hwnum < 10) {
-                    success = (new File("hw" + "0" + hwnum)).mkdirs();
-		}
-		else {
-		    success = (new File("hw" + hwnum)).mkdirs();
-		}
+                boolean success = (new File("hw" + hwnum)).mkdirs();
                 if (!success) {
                     System.out.println("Couldn't create the directory, your hw number already exists.");
                 }
@@ -66,14 +60,8 @@ public class heading {
             period = userin.nextInt();
             System.out.print("Enter HW number: ");
             hwnum = userin.nextInt();
-	    boolean success = false;
-            if (hwnum < 10) {
-                success = (new File("hw" + "0" + hwnum)).mkdirs();
-            }
-            else {
-		success = (new File("hw" + hwnum)).mkdirs();                
-            }
-            if (!(success)) {
+            boolean success = (new File("hw" + hwnum)).mkdirs();
+            if (!success) {
                 System.out.println("Couldn't create the directory, your hw number already exists.");
             }
             String filler = userin.nextLine();
