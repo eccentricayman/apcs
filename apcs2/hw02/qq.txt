@@ -1,0 +1,31 @@
+Ayman Ahmed
+APCS2 pd5
+HW#2 -- Exploration
+2016-02-23
+
+a. 2x2 is not solvable, because no matter where you place a queen, there are
+   no other places where you can place a queen and have the other one solve
+   this case.
+
+b. 3x3 is also not solvable, for the same reasons above.
+
+c. 4x4 is solvable, and it has two solutions; the solutions were found through
+   testing all the positions using the method of moving in a L shaped manner,
+   and checking if any of the queens can attack each other.
+
+d. 5x5 is solvable, and has more than two solutions through testing with the
+   same method above.
+
+e. 6x6 is also solvable, but has exactly 4 solutions through testing, that don't
+   involve just rotating the board around.
+
+f. 7x7 is solvable as well, and has at least five solutions. 
+
+g. 8x8 is also solvable, and has at least one solutions as well. (This one
+   became quite large to test.)
+
+
+Notes: The amount of solutions as n goes higher seems to increase, but 6x6 is
+       an outlier, only having 4 solutions. Also, after going back and testing
+       more solutions for 5x5, it has at least 5 solutions, which means 6 is
+       definetely an outlier.
