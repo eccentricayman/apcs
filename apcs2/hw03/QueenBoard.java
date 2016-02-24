@@ -1,7 +1,7 @@
 /*
   Ayman Ahmed
   APCS2 pd5
-  HW03 -- 
+  HW03 -- Execution
   23-2-16
 */
 
@@ -13,27 +13,48 @@
 public class QueenBoard {
 
     private int[][] _board;
-    
+
     public QueenBoard( int size ) {
         _board = new int[size][size];
     }
 
     /***
      * precondition: board is filled with 0's only.
-     * postcondition: 
-     * If a solution is found, board shows position of N queens, 
+     * postcondition:
+     * If a solution is found, board shows position of N queens,
      * returns true.
-     * If no solution, board is filled with 0's, 
+     * If no solution, board is filled with 0's,
      * returns false.
      */
     public boolean solve() {
-        return false;
+        //solves with first column;
+        if (solveH(0)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
-     *Helper method for solve. 
+     *Helper method for solve.
      */
     private boolean solveH( int col ) {
+        if (col == _board.length) {
+            printSolution();
+            return true;
+        }
+        for (int i = 0 ; i < _board.length ; i++) {
+            if (addQueen(i, col)) {
+                if (solveH(col + 1)) {
+                    return true;
+                }
+                else {
+                    removeQueen(i, col);
+                }
+            }
+        }
+        //probably won't reach here unless something is seriously wrong
         return false;
     }
 
@@ -44,6 +65,22 @@ public class QueenBoard {
             all negs and 0's replaced with underscore
             all 1's replaced with 'Q'
         */
+        String retstr = "";
+        String ret = this.toString();
+        //splits string by tabs
+        String[] places = ret.split("\\t");
+        for (int i = 0 ; i < places.length ; i++) {
+            if (!(places[i].equals("\\n")) && Integer.parseInt(places[i]) <= 0) {
+                places[i] = "_";
+            }
+            else if (!(places[i].equals("\\n")) && Integer.parseInt(places[i]) == 1) {
+                places[i] = "Q";
+            }
+        }
+        for (int j = 0 ; j < places.length ; j++) {
+            retstr += places[j] + "\t";
+        }
+        System.out.println(retstr);
     }
 
 
@@ -52,8 +89,9 @@ public class QueenBoard {
 
     /***
      * <General description>
-     * precondition: 
-     * postcondition: 
+     * precondition: row and column are within range of _board
+     * postcondition: If you can add a queen at a position, it does that, then
+     returns true. If you can't, it returns false.
      */
     private boolean addQueen(int row, int col) {
         if(_board[row][col] != 0){
@@ -73,12 +111,13 @@ public class QueenBoard {
         }
         return true;
     }
-
+    
 
     /***
      * <General description>
-     * precondition: 
-     * postcondition: 
+     * precondition: Row and column must be within range of _board
+     * postcondition: Returns false if there is no queen at given position,
+     and removes the queen from a position and returns true if there is one.
      */
     private boolean removeQueen(int row, int col) {
         if ( _board[row][col] != 1 ) {
@@ -103,8 +142,9 @@ public class QueenBoard {
 
     /***
      * <General description>
-     * precondition: 
-     * postcondition: 
+     * precondition: Board must be solved for anything meaningful
+     * postcondition: WIll return a string of the board, with 1s representing
+     queens.
      */
     public String toString() {
         String ans = "";
@@ -128,5 +168,5 @@ public class QueenBoard {
         b.removeQueen(3,0);
         System.out.println(b);
     }
-    
+
 }//end class
