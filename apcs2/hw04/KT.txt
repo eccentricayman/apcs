@@ -1,0 +1,19 @@
+Ayman Ahmed
+APCS2 pd5
+HW#4 -- Knightly Exploration
+2016-02-24
+
+Since the knight can only move in so many directions based upon where
+it starts, My algorithm starts off with the knight starting at the
+top-left corner. A recursive function will be run for the knight, that
+will check all the possible positions it can move to, and recursively
+run the function starting from that position. At the beginning, it
+check if the spot has already been touched by the knight. Since there
+are only 8 directions a knight can move in at max, testing all the
+possible places the knight can move can be hardcoded.
+
+Ex. (Psuedo-Code)
+if (col > 1 && row > 0 && _board[col - 2][row + 1] == 0) {
+  //traverse board at col - 2, row - 1
+}
+//test 7 more times with all the other possible moves
