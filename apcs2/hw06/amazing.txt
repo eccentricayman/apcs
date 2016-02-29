@@ -5,4 +5,11 @@ HW#6 -- A Maiz
 2016-02-29
 */
 
+My idea revolves around following the right side of the wall, continuing to move until it can't.
+This seemed to work upon testing, but integrating it would require a weird visualization of the
+2D array.
 
+After testing, this worked much better than my previous algorithm which involved having a counter for
+the direction you would go in; once you hit a place where you couldn't move anymore, backtrack for n
+spaces in the opposite direction of the way you were moving. The problem with this algorithm was that
+if you needed to backtrack in more than one direction, it wouldn't store that information.
