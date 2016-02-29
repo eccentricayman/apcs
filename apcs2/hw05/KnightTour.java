@@ -99,21 +99,21 @@ class TourFinder {
 		if ( solved ) System.exit(0);
 
 		//primary base case: tour completed
-		if () {
+		if (moves == Math.pow(sideLength, 2) - 1) {
+            solved = true;
 			return;
 		}
 		//other base case: stepped off board or onto visited cell
-		if (  ) {
+		if (_board[x][y] != 0) {
 			return;
 		}
 		//otherwise, mark current location
 		//and recursively generate tour possibilities from current pos
 		else {
-
 			//delay(1000); //uncomment to slow down enough to view
-
+            
 			/*======================================
-			Recursively try to solve (find tour) from
+              Recursively try to solve (find tour) from
 			each of knight's available moves.
 			. e . d .
 			f . . . c
@@ -121,11 +121,35 @@ class TourFinder {
 			g . . . b
 			. h . a .
 			======================================*/
-
-
-			//If made it this far, path did not lead to tour, so back up.
-
-			System.out.println( this ); //refresh screen
+            if (_board[x + 2][y + 1] == 0) {
+                findTour(x + 2, y + 1, moves + 1);
+            }
+            else if (_board[x + 2][y - 1] == 0) {
+                findTour(x + 2, y - 1, moves + 1);
+            }
+            else if (_board[x - 2][y + 1] == 0) {
+                findTour(x - 2, y + 1, moves + 1);
+            }
+            else if (_board[x - 2][y - 1] == 0) {
+                findTour(x - 2, y - 1, moves + 1);
+            }
+            else if (_board[x + 1][y + 2] == 0) {
+                findTour(x + 1, y + 2, moves + 1);
+            }
+            else if (_board[x + 1][y - 2] == 0) {
+                findTour(x + 1, y - 2, moves + 1);
+            }
+            else if (_board[x - 1][y + 2] == 0) {
+                findTour(x - 1, y + 2, moves + 1);
+            }
+            else if (_board[x - 1][y - 2] == 0) {
+                findTour(x - 1, y - 2, moves + 1);
+            }
+            else {
+            //If made it this far, path did not lead to tour, so back up.
+            _board[x][y] = 0;
+            }
+            System.out.println( this ); //refresh screen
 		}
 	}
 }//end class TourFinder
