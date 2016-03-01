@@ -109,17 +109,24 @@ class MazeSolver {
         delay(50); //slow it down enough to be followable
 
         //primary base case
-        if (  ) {
+        if (solved) {
+            System.exit(0);
         }
         //other base case(s)...
-        else if ( ) {
+        else if (maze[x][y] == VISITED_PATH) {
+            return;
         }
-        else if ( ) {
+        else if (maze[x][y] == WALL) {
+            return;
         }
-        else if ( ) {
+        else if (maxe[x][y] == EXIT) {
+            solved = true;
+            return;
         }
         //recursive reduction
         else {
+            maze[x][y] = VISITED_PATH;
+            
         }
     }
 
