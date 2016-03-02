@@ -119,14 +119,23 @@ class MazeSolver {
         else if (maze[x][y] == WALL) {
             return;
         }
-        else if (maxe[x][y] == EXIT) {
+        else if (maze[x][y] == EXIT) {
             solved = true;
             return;
         }
         //recursive reduction
         else {
             maze[x][y] = VISITED_PATH;
-
+            //up
+            solve(x, y + 1);
+            //right
+            solve(x + 1, y);
+            //down
+            solve(x, y - 1);
+            //left
+            solve(x - 1, y);
+            //if gotten this far, unmark [x][y] as visited
+            maze[x][y] = PATH;
         }
     }
 
