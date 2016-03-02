@@ -33,7 +33,7 @@ class MazeSolver {
 
     public MazeSolver( String inputFile ) {
 
-        //init 2D array to represent maze 
+        //init 2D array to represent maze
         // ...same dimensions as default terminal window
         maze = new char[80][25];
         h = 0;
@@ -50,7 +50,7 @@ class MazeSolver {
 
                 String line = sc.nextLine();
 
-                if ( w < line.length() ) 
+                if ( w < line.length() )
                     w = line.length();
 
                 for( int i=0; i<line.length(); i++ )
@@ -58,7 +58,7 @@ class MazeSolver {
 
                 h++;
                 row++;
-            } 
+            }
 
             for( int i=0; i<w; i++ )
                 maze[i][row] = WALL;
@@ -74,7 +74,7 @@ class MazeSolver {
 
     public String toString() {
         //send ANSI code "ESC[0;0H" to place cursor in upper left
-        String retStr = "[0;0H";  
+        String retStr = "[0;0H";
         //emacs shortcut: C-q, then press ESC
         //emacs shortcut: M-x quoted-insert, then press ESC
 
@@ -126,7 +126,7 @@ class MazeSolver {
         //recursive reduction
         else {
             maze[x][y] = VISITED_PATH;
-            
+
         }
     }
 
@@ -145,14 +145,14 @@ public class Maze {
 
             MazeSolver ms = new MazeSolver( mazeInputFile );
             //clear screen
-            System.out.println( "[2J" ); 
+            System.out.println( "[2J" );
 
-            //display maze 
+            //display maze
             System.out.println( ms );
 
             //drop hero into the maze (be sure coords are on the path)
             //comment next line out when ready to randomize startpos
-            ms.solve( 4, 3 ); 
+            ms.solve( 4, 3 );
 
             /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             //drop our hero into maze at random location on path
@@ -168,9 +168,9 @@ public class Maze {
             ms.solve( startX, startY );
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
         }
-        catch( Exception e ) { 
+        catch( Exception e ) {
             System.out.println( "Error reading input file." );
-            System.out.println( "Usage: java Maze <filename>" ); 
+            System.out.println( "Usage: java Maze <filename>" );
         }
     }
 
