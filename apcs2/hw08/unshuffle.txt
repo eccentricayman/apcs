@@ -1,0 +1,11 @@
+Ayman Ahmed
+APCS2 pd5
+HW#8 -- Splitting n Mergin
+2016-03-04
+
+Base Case: If an array has one element, return it.
+Recursive Step: Split the array into two arrays with half of the
+elements each, and call the recursive function upon those two lists.
+The final step is to order the lists against each other, going up a
+level each time. This might require a helper function outside of
+the recursive method.
