@@ -9,17 +9,17 @@
   class MergeSort
   Implements mergesort on array of ints.
 
-  Summary of Algorithm: 
+  Summary of Algorithm:
 
   ======================================*/
 
 public class MergeSort {
 
     /******************************************************
-     * int[] merge(int[],int[]) 
+     * int[] merge(int[],int[])
      * Merges two input arrays
      * Precond:  Input arrays are sorted in ascending order
-     * Postcond: Input arrays unchanged, and 
+     * Postcond: Input arrays unchanged, and
      * output array sorted in ascending order.
      ******************************************************/
     private static int[] merge( int[] a, int[] b ) {
@@ -53,7 +53,7 @@ public class MergeSort {
 
 
     /******************************************************
-     * int[] sort(int[]) 
+     * int[] sort(int[])
      * Sorts input array using mergesort algorithm
      * Returns sorted version of input array (ascending)
      ******************************************************/
