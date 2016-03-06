@@ -48,6 +48,18 @@ public class MergeSort {
                 ctr++;
             }
         }
+        //to get rid of the rest of list a 
+        while (a_ctr < a.length) {
+        	ret_arr[ctr] = a[a_ctr];
+        	a_ctr++;
+        	ctr++;
+        }
+        //same thing for b
+        while (b_ctr < b.length) {
+        	ret_arr[ctr] = b[b_ctr];
+        	b_ctr++;
+        	ctr++;
+        }
         return ret_arr;
     }//end merge()
 
@@ -58,7 +70,18 @@ public class MergeSort {
      * Returns sorted version of input array (ascending)
      ******************************************************/
     public static int[] sort( int[] arr ) {
-        return new int[5];
+        if (arr.length == 1) {
+        	return arr;
+        }
+        else {
+      		int[] first = new int[arr.length / 2];
+      		int[] second = new int[arr.length / 2];
+      		for (int i = 0 ; i < arr.length / 2 ; i++) {
+      			first[i] = arr[i];
+      			second[i] = arr[i + (arr.length / 2)];
+      		}
+      		return merge(sort(first), sort(second));
+        }
     }//end sort()
 
 
@@ -104,12 +127,12 @@ public class MergeSort {
           System.out.println("\nMerging arr4 and arr6: ");
           printArray( merge(arr4,arr6) );
 
-          /*~~~~~~~~~~~~~~ Ye Olde Tester Bar ~~~~~~~~~~~~~~
           System.out.println("\nSorting arr4-7...");
           printArray( sort( arr4 ) );
           printArray( sort( arr5 ) );
           printArray( sort( arr6 ) );
           printArray( sort( arr7 ) );
+          /*~~~~~~~~~~~~~~ Ye Olde Tester Bar ~~~~~~~~~~~~~~
           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     }//end main()
 
