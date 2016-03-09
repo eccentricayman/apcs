@@ -1,0 +1,11 @@
+Ayman Ahmed
+APCS2 pd5
+HW#10 -- Justify
+2016-03-08
+
+Much like binary searching, merge sort is O(n*log(n)). Both binary
+search, merge sort splits the array into two halves multiple times;
+the only difference is that the last step, merging the arrays until
+one sorted array is achieved, has a runtime cost directly proportional
+to the amount of elements in the list; known as n. This explains the
+O(n*log(n)) runtime classification.
