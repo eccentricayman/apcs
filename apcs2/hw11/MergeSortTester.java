@@ -22,6 +22,7 @@
   n=10      time: 
   n=100     time: 
   ...
+  <huge> = 100,000
   n=<huge>  time: 
 
   ANALYSIS:
@@ -57,25 +58,30 @@ public class MergeSortTester {
  
     
     //returns how long an array takes to mergesort in seconds
-    public static void timeTest(int n) {
+    public static long timeTest(int n) {
         int[] arr = randArr(n);
-        System.out.println("Unsorted Array of length " + n);
-        printArray(arr);
         long start = System.nanoTime();
         MergeSort.sort(arr);
         long end = System.nanoTime();
-        System.out.println("Sorted Array");
-        printArray(arr);
-        System.out.println("Time: " + (end - start) + " nanoseconds");
+        return end - start;
     }
     
     public static void main( String[] args ) {
         //keep testing until user Ctrl + C's
         while (true) {
             Scanner sc = new Scanner(System.in);
+            long average = 0;
             System.out.print("Enter an array length to test or Ctrl + C to stop: ");
             int n = sc.nextInt();
-            timeTest(n);
+            long[] total = new long[50];
+            for (int i = 0 ; i < total.length ; i++) {
+                total[i] = timeTest(n);
+            }
+            for (int j = 0 ; j < total.length ; j++) {
+                average += total[j];
+            }
+            average /= 50;
+            System.out.println("Time: " + (average) + " nanoseconds");
         }
     }//end main
     
