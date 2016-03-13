@@ -18,12 +18,12 @@
 
   Mean execution times for dataset of size n:
   Batch size: <# of times each dataset size was run>
-  n=1       time: 
-  n=10      time: 
-  n=100     time: 
+  n=1       time:
+  n=10      time:
+  n=100     time:
   ...
   <huge> = 100,000
-  n=<huge>  time: 
+  n=<huge>  time:
 
   ANALYSIS:
   <INSERT YOUR RESULTS ANALYSIS HERE>
@@ -34,12 +34,12 @@ import java.util.Scanner;
 public class MergeSortTester {
 
     /******************************
-     * execution time analysis 
-     * <INSERT YOUR DESCRIPTION HERE OF 
-     *  YOUR APPARATUS FOR GENERATING EXECUTION 
+     * execution time analysis
+     * <INSERT YOUR DESCRIPTION HERE OF
+     *  YOUR APPARATUS FOR GENERATING EXECUTION
      *  TIME DATA...>
      ******************************/
-    
+
     //helper to randomly fill array
     public static int[] randArr(int n) {
         int[] arr = new int[n];
@@ -55,8 +55,8 @@ public class MergeSortTester {
             System.out.print( i + ",");
         System.out.println("]");
     }
- 
-    
+
+
     //returns how long an array takes to mergesort in seconds
     public static long timeTest(int n) {
         int[] arr = randArr(n);
@@ -65,7 +65,7 @@ public class MergeSortTester {
         long end = System.nanoTime();
         return end - start;
     }
-    
+
     public static void main( String[] args ) {
         //keep testing until user Ctrl + C's
         while (true) {
@@ -84,5 +84,5 @@ public class MergeSortTester {
             System.out.println("Time: " + (average) + " nanoseconds");
         }
     }//end main
-    
+
 }//end class
