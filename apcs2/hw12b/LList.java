@@ -21,7 +21,18 @@ public class LList implements List {
 	}
 
 	public boolean add(String x) {
-
+		LLNode temp = new LLNode(x);
+		LLNode current = beginning;
+		while (current.getNext() != null) {
+			current = current.getNext();
+		}
+		current.setNext(temp);
+		nodecount++;
 	}
 	
+	public String get(int i) {
+		for (int j = nodecount ; j > i ; j--) {
+			
+		}
+	}
 }
