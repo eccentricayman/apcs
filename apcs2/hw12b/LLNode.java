@@ -23,6 +23,7 @@ public class LLNode {
 
     public boolean set(String y) {
     	this.data = y;
+        return true;
     }
 
     public LLNode getNext() {
@@ -32,6 +33,7 @@ public class LLNode {
     //used to link to another node
     public boolean setNext(LLNode z) {
     	this.nextNode = z;
+        return true;
     }
 
 }
