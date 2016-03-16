@@ -5,19 +5,12 @@ HW#14 -- On the DLL
 2016-03-16
 */
 
-/*
-  Ayman Ahmed
-  APCS2 pd5
-  HW#13 -- LoList, LoLit
-  2016-03-15
-*/
+public class DLList implements List {
 
-public class LList implements List {
-
-	private LLNode beginning;
+	private DLLNode beginning;
 	private int nodecount;
 
-	public LList() {
+	public DLList() {
 		beginning = null;
 		nodecount = 0;
 	}
@@ -27,7 +20,7 @@ public class LList implements List {
 	}
 
 	public boolean add(String x) {
-		LLNode temp = new LLNode(x);
+		DLLNode temp = new DLLNode(x, null, null);
         temp.setNext(beginning);
 		beginning = temp;
 		nodecount++;
@@ -38,7 +31,7 @@ public class LList implements List {
 		if (i < 0 || i >= size()) {
 			throw new IndexOutOfBoundsException();
 		}
-        LLNode current = beginning;
+        DLLNode current = beginning;
 		for (int j = 0 ; j < i ; j++) {
             if (current.getNext() == null) {
                 return new String();
@@ -50,7 +43,7 @@ public class LList implements List {
     
     public String set(int i, String x) {
         String tmp = get(i);
-        LLNode current = beginning;
+        DLLNode current = beginning;
         for (int j = 0 ; j < i ; j++) {
             if (current.getNext() == null) {
                 break;
@@ -62,27 +55,34 @@ public class LList implements List {
     }
 
     public void add(int i, String s) {
-        LLNode toadd = new LLNode(s);
-        LLNode current = beginning;
-        int index = i - 1;
-        for (int j = 0 ; j < size() ; j++) {
-            if (j == index) {
-                toadd.setNext(current.getNext());
-                current.setNext(toadd);
-            }
-            current = current.getNext();
+        DLLNode toadd = new DLLNode(s, null, null);
+        DLLNode current = beginning;
+        if (i < 1) {
+            toadd.setNext(current);
+            nodecount++;
         }
-        nodecount++;
+        else {
+            for (int j = 0 ; j < size() ; j++) {
+                if (j == i) {
+                    current.getPrev().setNext(toadd);
+                    toadd.setPrev(current);
+                    toadd.setNext(current.getNext());
+                }
+                current = current.getNext();
+            }
+            nodecount++;
+        }
     }
 
     public String remove(int i) {
-        LLNode current = beginning;
+        DLLNode current = beginning;
         String temp = "";
         int ctr = 0;
         while (current.getNext() != null) {
-		 	if (ctr == i - 1) {
-		 		temp = current.getNext().get();
-		 		current.setNext(current.getNext().getNext());
+		 	if (ctr == i) {
+		 		temp = current.get();
+		 		DLLNode tmp = current.getNext();
+                current.getPrev().setNext(tmp);
 		 		break;
 		 	}
 		 	ctr++;
@@ -92,7 +92,7 @@ public class LList implements List {
 
     public String toString() {
     	String retstr = "HEAD --> ";
-    	LLNode current = beginning;
+    	DLLNode current = beginning;
         while (current != null) {
             retstr += current.get() + " --> ";
             current = current.getNext();
@@ -102,7 +102,7 @@ public class LList implements List {
     }
 
     public static void main(String[] args) {
-        LList james = new LList();
+        DLList james = new DLList();
 
         System.out.println( james );
         System.out.println( "size: " + james.size() );
