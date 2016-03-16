@@ -21,7 +21,7 @@ public class LList implements List {
 
 	public boolean add(String x) {
 		LLNode temp = new LLNode(x);
-    temp.setNext(beginning);
+        temp.setNext(beginning);
 		beginning = temp;
 		nodecount++;
         return true;
@@ -72,15 +72,15 @@ public class LList implements List {
         LLNode current = beginning;
         String temp = "";
         int ctr = 0;
-		 while (current.getNext() != null) {
+        while (current.getNext() != null) {
 		 	if (ctr == i - 1) {
 		 		temp = current.getNext().get();
 		 		current.setNext(current.getNext().getNext());
 		 		break;
 		 	}
 		 	ctr++;
-		 }
-		 return temp;
+        }
+        return temp;
     }
 
     public String toString() {
@@ -106,8 +106,8 @@ public class LList implements List {
         System.out.println(x);
         System.out.println(x.remove(0));
         System.out.println(x);
-        /*
-        */
+        /*===========================
+        ===========================*/
     }
 
 }
