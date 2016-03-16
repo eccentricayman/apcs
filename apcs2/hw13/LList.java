@@ -20,7 +20,8 @@ public class LList implements List {
 	}
 
 	public boolean add(String x) {
-		LLNode temp = new LLNode(x, beginning);
+		LLNode temp = new LLNode(x);
+    temp.setNext(beginning);
 		beginning = temp;
 		nodecount++;
         return true;
@@ -69,21 +70,44 @@ public class LList implements List {
 
     public String remove(int i) {
         LLNode current = beginning;
-        int previndex = i - 1;
-        for (int j = 0 ; j < size() ; j++) {
-            if (j == previndex) {
-                current.setNext()
-            }
-        }
+        String temp = "";
+        int ctr = 0;
+		 while (current.getNext() != null) {
+		 	if (ctr == i - 1) {
+		 		temp = current.getNext().get();
+		 		current.setNext(current.getNext().getNext());
+		 		break;
+		 	}
+		 	ctr++;
+		 }
+		 return temp;
+    }
+
+    public String toString() {
+    	String retstr = "[";
+    	LLNode current = beginning;
+    	while (current.getNext() != null) {
+    		retstr += current.get() + ", ";
+    		current = current.getNext();
+    	}
+    	retstr = retstr.substring(0, retstr.length() - 2) + "]";
+    	return retstr;
     }
 
     public static void main(String[] args) {
         LList x = new LList();
         System.out.println(x.add("Arnold"));
+        System.out.println(x.add("Barnie"));
         System.out.println(x.set(0,"Tarah"));
         System.out.println(x.get(0));
+        System.out.println(x.size());
         System.out.println(x.get(1));
-        System.out.println(x.size());   
+        x.add(1, "Billary");
+        System.out.println(x);
+        System.out.println(x.remove(0));
+        System.out.println(x);
+        /*
+        */
     }
-    
+
 }
