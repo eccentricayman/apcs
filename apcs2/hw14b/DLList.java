@@ -1,8 +1,8 @@
 /*
-Ayman Ahmed
-APCS2 pd5
-HW#14 -- On the DLL
-2016-03-16
+  Team Unlnkd -- Ayman Ahmed and Jessica Yang
+  APCS2 pd5
+  HW#14 -- On the DLL
+  2016-03-16
 */
 
 public class DLList implements List {
@@ -20,10 +20,9 @@ public class DLList implements List {
 	}
 
 	public boolean add(String x) {
-		DLLNode temp = new DLLNode(x, null, null);
-        temp.setNext(beginning);
-		beginning = temp;
-		nodecount++;
+		DLLNode temp = new DLLNode(x, beginning, null);
+        beginning = temp;
+        nodecount++;
         return true;
 	}
 
@@ -40,7 +39,7 @@ public class DLList implements List {
 		}
         return current.get();
 	}
-    
+
     public String set(int i, String x) {
         String tmp = get(i);
         DLLNode current = beginning;
@@ -57,19 +56,16 @@ public class DLList implements List {
     public void add(int i, String s) {
         DLLNode toadd = new DLLNode(s, null, null);
         DLLNode current = beginning;
-        if (i < 1) {
-            toadd.setNext(current);
-            nodecount++;
+        if (i == 0) {
+            add(s);
         }
         else {
-            for (int j = 0 ; j < size() ; j++) {
-                if (j == i) {
-                    current.getPrev().setNext(toadd);
-                    toadd.setPrev(current);
-                    toadd.setNext(current.getNext());
-                }
-                current = current.getNext();
+            DLLNode temp = beginning;
+            for (int j = 0 ; j < i - 1 ; j++) {
+                temp = temp.getNext();
             }
+            toadd.setNext(temp.getNext());
+            temp.setNext(toadd);
             nodecount++;
         }
     }
@@ -77,17 +73,22 @@ public class DLList implements List {
     public String remove(int i) {
         DLLNode current = beginning;
         String temp = "";
-        int ctr = 0;
-        while (current.getNext() != null) {
-		 	if (ctr == i) {
-		 		temp = current.get();
-		 		DLLNode tmp = current.getNext();
-                current.getPrev().setNext(tmp);
-		 		break;
-		 	}
-		 	ctr++;
+        if (i == 0) {
+            temp = beginning.get();
+            beginning = beginning.getNext();
+            nodecount--;
+            return temp;
         }
-        return temp;
+        else {
+            for (int j = 0 ; j < i - 1 ; j++) {
+                current = current.getNext();
+            }
+            temp = current.getNext().get();
+            //current.getPrev().setNext(current.getNext());
+            current.setNext(current.getNext().getNext());
+            nodecount--;
+            return temp;
+        }
     }
 
     public String toString() {
@@ -136,7 +137,7 @@ public class DLList implements List {
         System.out.println( "...after add(4,phat): " );
         System.out.println( james );
 
-        System.out.println( "...after remove last: " 
+        System.out.println( "...after remove last: "
                             + james.remove( james.size() - 1) );
         System.out.println( james );
 
@@ -148,7 +149,7 @@ public class DLList implements List {
 
         System.out.println( "...after remove(0): " + james.remove(0) );
         System.out.println( james );
-    
+
         /*===========================
           ===========================*/
     }
