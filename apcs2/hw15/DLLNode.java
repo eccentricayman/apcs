@@ -10,11 +10,11 @@ public class DLLNode<T> {
     //data in this node
 	private T data;
 	//next element
-	private DLLNode nextNode;
+	private DLLNode<T> nextNode;
     //previous element
-    private DLLNode prevNode;
+    private DLLNode<T> prevNode;
 
-    public DLLNode(T x, DLLNode nxt, DLLNode prv) {
+    public DLLNode(T x, DLLNode<T> nxt, DLLNode<T> prv) {
     	this.data = x;
     	this.nextNode = nxt;
         this.prevNode = prv;
@@ -29,21 +29,21 @@ public class DLLNode<T> {
         return true;
     }
 
-    public DLLNode getNext() {
+    public DLLNode<T> getNext() {
     	return this.nextNode;
     }
 
-    public DLLNode getPrev() {
+    public DLLNode<T> getPrev() {
         return this.prevNode;
     }
 
     //used to link to another node
-    public boolean setNext(DLLNode z) {
+    public boolean setNext(DLLNode<T> z) {
     	this.nextNode = z;
         return true;
     }
 
-    public boolean setPrev(DLLNode X) {
+    public boolean setPrev(DLLNode<T> X) {
         this.prevNode = X;
         return true;
     }

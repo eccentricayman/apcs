@@ -41,7 +41,7 @@ public class DLList<T> implements List<T> {
 	}
 
     public T set(int i, T x) {
-        T tmp = get(i);
+        DLLNode<T> tmp = new DLLNode<T>(x, null, null);
         DLLNode current = beginning;
         for (int j = 0 ; j < i ; j++) {
             if (current.getNext() == null) {
@@ -103,7 +103,7 @@ public class DLList<T> implements List<T> {
     }
 
     public static void main(String[] args) {
-        DLList james = new DLList();
+        DLList james = new DLList<String>();
 
         System.out.println( james );
         System.out.println( "size: " + james.size() );
