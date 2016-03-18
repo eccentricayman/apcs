@@ -1,30 +1,30 @@
 /*
-Team Unlnkd -- Ayman Ahmed and Jordan Louie
+Ayman Ahmed
 APCS2 pd5
-HW#14 -- On the DLL
-2016-03-16
+HW#15 -- Generically Speaking...
+2016-03-17
 */
 
-public class DLLNode {
+public class DLLNode<T> {
 
     //data in this node
-	private String data;
+	private T data;
 	//next element
 	private DLLNode nextNode;
     //previous element
     private DLLNode prevNode;
 
-    public DLLNode(String x, DLLNode nxt, DLLNode prv) {
+    public DLLNode(T x, DLLNode nxt, DLLNode prv) {
     	this.data = x;
     	this.nextNode = nxt;
         this.prevNode = prv;
     }
 
-    public String get() {
+    public T get() {
     	return this.data;
     }
 
-    public boolean set(String y) {
+    public boolean set(T y) {
     	this.data = y;
         return true;
     }
@@ -49,3 +49,4 @@ public class DLLNode {
     }
 
 }
+
