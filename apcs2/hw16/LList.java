@@ -102,7 +102,56 @@ public class LList<T> implements List<T> {
         retstr += "NULL";
         return retstr;
     }
+    
+    public Iterator<T> iterator() {
+        return new LLIterator<T>();
+    }
 
+    private class LLIterator implements Iterator<T> {
+
+        private boolean removed;
+        private LLNode<T> current;
+
+        public LLIterator() {
+            current = beginning;
+            removed = false;
+        }
+
+        public boolean hasNext() {
+            if (current.getNext() != null) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public T next() {
+            if (current.hasNext()) {
+                current = current.getNext();
+                return current.get();
+            }
+            else {
+                throw new NoSuchElementException();
+            }
+        }
+
+        public void remove() {
+            if (removed = true) {
+                throw new IllegalStateException();
+            }
+            else {
+                if (current.hasNext() == true) {
+                    current.getPrev().setNext(current.getNext());
+                }
+                else {
+                    current.getPrev().setNext(null);
+                }
+            }
+        }
+
+    }
+    
     public static void main(String[] args) {
         LList james = new LList<String>();
 
