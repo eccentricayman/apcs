@@ -5,6 +5,9 @@ HW#18 -- For Each is the Goal
 2016-03-24
 */
 
+import java.util.NoSuchElementException;
+import java.util.Iterator;
+
 public class LList<T> implements List<T> {
 
 	private LLNode<T> beginning;
@@ -103,8 +106,8 @@ public class LList<T> implements List<T> {
         return retstr;
     }
     
-    public Iterator<T> iterator() {
-        return new LLIterator<T>();
+    public Iterator iterator() {
+        return new LLIterator();
     }
 
     private class LLIterator implements Iterator<T> {
