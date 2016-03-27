@@ -1,5 +1,5 @@
 /*
-Ayman Ahmed
+Team Salmon -- Ayman Ahmed and Leith Conybeare
 APCS2 pd5
 HW#18 -- For Each is the Goal
 2016-03-24
