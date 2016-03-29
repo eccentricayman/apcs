@@ -1,9 +1,12 @@
 /*
-Ayman Ahmed
+Team Salmon -- Ayman Ahmed and Leith Conybeare
 APCS2 pd5
-HW#16 -- Generational Improvement
-2016-03-19
+HW#18 -- For Each is the Goal
+2016-03-24
 */
+
+import java.util.NoSuchElementException;
+import java.util.Iterator;
 
 public class LList<T> implements List<T> {
 
@@ -103,6 +106,55 @@ public class LList<T> implements List<T> {
         return retstr;
     }
     
+    public Iterator iterator() {
+        return new LLIterator();
+    }
+
+    private class LLIterator implements Iterator<T> {
+
+        private boolean removed;
+        private LLNode<T> current;
+
+        public LLIterator() {
+            current = beginning;
+            removed = false;
+        }
+
+        public boolean hasNext() {
+            if (current.getNext() != null) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public T next() {
+            if (this.hasNext()) {
+                current = current.getNext();
+                return current.get();
+            }
+            else {
+                throw new NoSuchElementException();
+            }
+        }
+
+        public void remove() {
+            if (removed = true) {
+                throw new IllegalStateException();
+            }
+            else {
+                if (this.hasNext() == true) {
+                    current.getPrev().setNext(current.getNext());
+                }
+                else {
+                    current.getPrev().setNext(null);
+                }
+            }
+        }
+
+    }
+    
     public static void main(String[] args) {
         LList james = new LList<String>();
 
@@ -156,4 +208,3 @@ public class LList<T> implements List<T> {
     }
 
 }
-
