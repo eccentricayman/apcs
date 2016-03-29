@@ -21,7 +21,7 @@ public class Latkes {
             return;
         }
         else {
-            for (int i = _stack.length - 1 ; i >= 0 ; i--) {
+            for (int i = 0 ; i < _stack.length - 1 ; i++) {
                 _stack[i + 1] = _stack[i];
             }
             _stack[0] = s;
@@ -34,11 +34,13 @@ public class Latkes {
             // do nothing
             return "";
         }
-        String temp = _stack[0];
-        for (int i = 1 ; i < _stack.length - 1 ; i++) {
-            _stack[i - 1] = _stack[i];
+        else {
+            String temp = _stack[0];
+            for (int i = 1 ; i < _stack.length ; i++) {
+                _stack[i - 1] = _stack[i];
+            }
+            return temp;
         }
-        return temp;
     }
 
     //chk for emptiness
@@ -66,7 +68,7 @@ public class Latkes {
     public static void main( String[] args ) {
 	
           Latkes tastyStack = new Latkes(10);
-
+          
           tastyStack.push("aoo");
           tastyStack.push("boo");
           tastyStack.push("coo");
