@@ -1,3 +1,10 @@
+/*
+Ayman Ahmed
+APCS2 pd5
+HW#20 -- Stacks on Stacks on Stacks on Stacks… …  (Do I Smell Recursion?)
+2016-03-29
+*/
+
 /*****************************************************
  * skeleton for class Latkes
  * Implements a stack of Strings using an array as underlying container.
