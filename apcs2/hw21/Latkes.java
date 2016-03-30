@@ -57,6 +57,9 @@ public class Latkes {
 	return _stackSize >= _stack.length; 
     }
 
+    public String peek() {
+        return _stack[0];
+    }
 
     //main method for testing
     public static void main( String[] args ) {
