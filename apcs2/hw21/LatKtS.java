@@ -6,7 +6,7 @@ HW#21 -- Stack: What is It Good For?
 */
 
 public class LatKtS {
-    
+
     public static String flip(String s) {
         String returnu = "";
         Latkes stringstacku = new Latkes(s.length());
@@ -37,6 +37,10 @@ public class LatKtS {
             }
         }
         return ctr[0] == ctr[1];
+    }
+
+    public static void main(String[] args) {
+        
     }
     
 }
