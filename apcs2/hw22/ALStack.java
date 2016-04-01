@@ -1,68 +1,52 @@
-/*****************************************************
- * skeleton for class Latkes
- * Implements stack of Strings using array as underlying container.
- * new in Version 2: typed for generics
- *****************************************************/
+/*
+Ayman Ahmed
+APCS2 pd5
+HW#22 -- Standardization
+2016-03-31
+*/
 
-public class Latkes<T> implements Stack<T> {
+import java.util.ArrayList;
 
-    private T [] _stack;
-    private int _stackSize;
+public class ALStack implements Stack<T> {
 
+    private ArrayList<T> stack;
+    private int size;
 
-    //constructor
-    public Latkes() { 
-        _stack = (T[])new Object[10];
-        _stackSize = 0;
+    public ALStack() {
+        stack = new ArrayList<T>();
+        size = 0;
     }
 
-    //overloaded constructor allows for intial capacity declaration
-    public Latkes( int size ) { 
-        _stack = (T[])(new Object[size]);
-        _stackSize = 0;
-    }
-    
     public boolean isEmpty() {
-        return _stackSize == 0;
+        return stack.size() == 0;
     }
 
-    public boolean isFull() {
-        return _stackSize >= _stack.length;
-    }
-
-    public void push(T s) {
-        if (isFull()) {
-            T[] temp = (T[])new Object[_stack.length * 2];
-            for (int i = 0 ; i < _stack.length ; i++) {
-                temp[i] = _stack[i];
-            }
-            _stack = temp;
-        }
-        _stack[_stackSize] = s;
-        _stackSize++;
-    }
-
-    public T pop() {
-        T retT = (T)new Object();
-        if (isEmpty()) {
-            return null;
-        }
-        retT = _stack[_stackSize---1];
-        return retT;
-    }
-    
     public T peek() {
         if (isEmpty()) {
             return null;
         }
-        return _stack[_stackSize];
+        else {
+            return stack.get(size);
+        }
     }
-    
-    //main method for testing
+
+    public T pop() {
+        T ret = (T)new Object();
+        if (isEmpty()) {
+            return null;
+        }
+        ret = stack.remove(size---1);
+    }
+
+    public void push(T s) {
+        stack.add(size, s);
+        size++;
+    }
+
     public static void main( String[] args ) {
 
 
-	Latkes<String> tastyStack = new Latkes<String>(10);
+	ALStack<String> tastyStack = new ALStack<String>();
 
 	tastyStack.push("aoo");
 	tastyStack.push("boo");
@@ -121,5 +105,5 @@ public class Latkes<T> implements Stack<T> {
     /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
           ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
     }//end main()
-
-}//end class Latkes
+    
+}
