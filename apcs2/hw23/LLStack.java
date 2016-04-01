@@ -34,7 +34,7 @@ public class LLStack<T> implements Stack<T> {
             return null;
         }
         else {
-            return stack.peekFirst();
+            return stack.get(size-1);
         }
     }
 
