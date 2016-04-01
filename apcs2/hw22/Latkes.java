@@ -58,7 +58,7 @@ public class Latkes<T> implements Stack<T> {
         return _stack[_stackSize];
     }
     
-    //main method for testing
+pp    //main method for testing
     public static void main( String[] args ) {
 
 

@@ -1,13 +1,20 @@
-/*
-Ayman Ahmed
-APCS2 pd5
-HW#21 -- Stack: What is It Good For?
-2016-03-30
-*/
+/*****************************************************
+ * skeleton for class LatKtS (LatKeysToSuccess)
+ * Driver class for Latkes.
+ * Uses a stack to reverse a text string, check for sets of matching parens.
+ *****************************************************/
 
-public class LatKtS {
 
-    public static String flip(String s) {
+public class LatKtS 
+{
+
+    /**********************************************************
+     * precondition:  input string has length > 0
+     * postcondition: returns reversed string s
+     *                flip("desserts") -> "stressed"
+     **********************************************************/
+    public static String flip( String s ) 
+    { 
         String returnu = "";
         Latkes stringstacku = new Latkes(s.length());
         for (int i = 0 ; i < s.length() ; i++) {
@@ -17,30 +24,33 @@ public class LatKtS {
             returnu += stringstacku.pop();
         }
         return returnu;
-    }
+    }//end flip()
 
-    public static boolean allMatched(String s) {
-        int[] ctr = new int[2];
-        Latkes stringstacku = new Latkes(s.length());
-        for (int i = 0 ; i < s.length() ; i++) {
-            stringstacku.push(s.substring(i, i++));
-        }
-        while (!(stringstacku.isEmpty())) {
-            if (stringstacku.pop().equals("(")) {
-                ctr[0]++;
-            }
-            else if (stringstacku.pop().equals(")")) {
-                ctr[1]++;
-            }
-            else {
-                stringstacku.pop();
-            }
-        }
-        return ctr[0] == ctr[1];
-    }
 
-    public static void main(String[] args) {
+    /**********************************************************
+     * precondition:  s contains only the characters {,},(,),[,]
+     * postcondition: allMatched( "({}[()])" )    -> true
+     *                allMatched( "([)]" )        -> false
+     *                allMatched( "" )            -> true
+     **********************************************************/
+    public static boolean allMatched( String s ) 
+    { 
         
+    }//end allMatched()
+
+
+    //main method to test
+    public static void main( String[] args ) { 
+
+        /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
+          System.out.println(flip("stressed"));
+          System.out.println(allMatched( "({}[()])" )); //true
+          System.out.println(allMatched( "([)]" ) ); //false
+          System.out.println(allMatched( "(){([])}" ) ); //true
+          System.out.println(allMatched( "](){([])}" ) ); //false
+          System.out.println(allMatched( "(){([])}(" ) ); //false
+          System.out.println(allMatched( "()[[]]{{{{((([])))}}}}" ) ); //true
+          ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
     }
-    
-}
+
+}//end class LatKtS
