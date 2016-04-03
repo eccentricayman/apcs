@@ -7,7 +7,7 @@ HW#22 -- Standardization
 
 import java.util.ArrayList;
 
-public class ALStack implements Stack<T> {
+public class ALStack<T> implements Stack<T> {
 
     private ArrayList<T> stack;
     private int size;
@@ -26,7 +26,7 @@ public class ALStack implements Stack<T> {
             return null;
         }
         else {
-            return stack.get(size);
+            return stack.get(size-1);
         }
     }
 
@@ -36,6 +36,7 @@ public class ALStack implements Stack<T> {
             return null;
         }
         ret = stack.remove(size---1);
+        return ret;
     }
 
     public void push(T s) {
