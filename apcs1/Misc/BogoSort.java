@@ -1,9 +1,10 @@
 /*
-The worst sorting algrithm to exist since
-well ever
-at least it's better than manually sorting data yourself!
-sometimes
-*/
+ * Bogosort Implementation using ArrayLists
+ * The worst sorting algrithm to exist since
+ * well ever
+ * at least it's better than manually sorting data yourself!
+ * (sometimes)
+ */
 
 import java.util.ArrayList;
 
@@ -40,7 +41,7 @@ public class BogoSort {
     }
 
     public static void main(String[] args) {
-    	ArrayList<Integer> test = populate(7, 69, 420);	
+    	ArrayList<Integer> test = populate(7, 69, 420);
     	System.out.println(test);
     	double start = System.currentTimeMillis();
     	sort(test);
