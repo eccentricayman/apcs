@@ -1,5 +1,5 @@
 /*
- * Bogosort Implementation using ArrayLists
+ * Bogosort Implementation using ArrayLists and Recursion
  * The worst sorting algrithm to exist since
  * well ever
  * at least it's better than manually sorting data yourself!
