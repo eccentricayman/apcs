@@ -30,7 +30,10 @@ public class Scheme {
      *	         evaluate( "( + 4 ( * 2 5 ) 3 )" ) -> 17
      ******************************************************/
     public static String evaluate( String expr ) {
-        
+        ALStack toparse = new ALStack<String>();
+        for (int i = 0 ; i < expr.length() ; i++) {
+            toparse.push(expr.substring(i, i + 1)); 
+        }
     }//end evaluate()
 
 
@@ -58,7 +61,7 @@ public class Scheme {
     //main method for testing
     public static void main( String[] args ) {
 
-	/*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
+        /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
 	String zoo1 = "( + 4 3 )";
 	System.out.println(zoo1);
 	System.out.println("zoo1 eval'd: " + evaluate(zoo1) );
