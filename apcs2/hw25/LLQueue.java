@@ -17,7 +17,6 @@ HW#25 -- Brits Do Not Wait in Line
  ******************************************************/
 
 import java.util.NoSuchElementException;
-import java.util.RuntimException;
 
 public class LLQueue<T> implements Queue<T> {
 
@@ -37,7 +36,7 @@ public class LLQueue<T> implements Queue<T> {
             current = current.getNext();
         }
         current.setNext(temp);
-        temp.setnext(_end);
+        temp.setNext(_end);
     }//O(n)
 
     // means of removing a thing from the collection
@@ -46,11 +45,12 @@ public class LLQueue<T> implements Queue<T> {
     public T dequeue() {
         T temp = _front.getNext().getValue();
         if (_front.getNext().equals(_end)) {
-            throw new NoSuchElementException("WOOHOO EMPTY LINE :DDD");
+            throw new NoSuchElementException("Congratulations, the line is empty.");
         }
         else {
             _front.setNext(_front.getNext().getNext());
         }
+        return temp;
     }//O(1)
 
     // means of peeking at thing next in line for removal
@@ -64,16 +64,18 @@ public class LLQueue<T> implements Queue<T> {
 
     // print each node, separated by spaces
     public String toString() {
-        String retstr = "NULL ";
-        current = _front.getNext();
+        String retstr = "FRONT ";
+        LLNode<T> current = _front.getNext();
         while (!(current.getNext().equals(_end))) {
             retstr += "-> " + current.getValue() + " ";
+            current = current.getNext();
         }
-    }//O(?)
+        retstr += "-> END";
+        return retstr;
+    }//O(n)
 
     public static void main( String[] args ) {
 
-	/*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
 	Queue<String> LLQueuelJ = new LLQueue<String>();
 
 	System.out.println("\nnow enqueuing thrice...");
@@ -91,6 +93,7 @@ public class LLQueue<T> implements Queue<T> {
 
 	System.out.println("\nDequeuing from empty queue should yield error...");
 	System.out.println( LLQueuelJ.dequeue() );
+	/*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
 	  ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
 
     }//end main
