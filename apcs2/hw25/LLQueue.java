@@ -45,7 +45,7 @@ public class LLQueue<T> implements Queue<T> {
     public T dequeue() {
         T temp = _front.getNext().getValue();
         if (_front.getNext().equals(_end)) {
-            throw new NoSuchElementException("Congratulations, the line is empty.");
+            throw new NoSuchElementException("The queue's empty, WHAT A SHAME");
         }
         else {
             _front.setNext(_front.getNext().getNext());
