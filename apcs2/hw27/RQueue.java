@@ -1,7 +1,7 @@
 /*
 Ayman Ahmed
 APCS2 pd5
-HW#27 -- BLEH
+HW#27 -- Now Let's Consider You Lot at Fake Terry's 
 2016-04-05
 */
 
@@ -20,6 +20,7 @@ HW#27 -- BLEH
  *
  ******************************************************/
 
+import java.util.NoSuchElementException;
 
 public class RQueue<T> implements Queue<T> {
 
@@ -56,16 +57,12 @@ public class RQueue<T> implements Queue<T> {
             _front.setNext(_front.getNext().getNext());
         }
         //shuffle now
-        LLNode<T> current = _front.getNext();
-        while (!(current.getNext().equals(_end))) {
-        	int rand = Math.random() * _size;
-        	
-        }
+        sample();
         return temp;
 	}//end dequeue()
 
 	public T peekFront() {
-
+		return _front.getNext().getValue();
 	}
 
 	/******************************************
@@ -75,22 +72,47 @@ public class RQueue<T> implements Queue<T> {
 	 * 
 	******************************************/
 	public void sample () {
-
+		LLNode<T> end = _front;
+		while (!(end.getNext().equals(_end))) {
+			end = end.getNext();
+		}
+		//just to get last element
+		//to actually randomize
+		LLNode<T> current = _front;
+		while (!(current.getNext().equals(_end))) {
+			int fiftyfifty = (int)(Math.random()); 
+			//fifty percent chance to move to end
+			if (fiftyfifty == 0) {
+				LLNode<T> tomove = current;
+				end.setNext(tomove);
+				tomove.setNext(_end);
+			}
+		}
 	}//end sample()
 
 	public boolean isEmpty() {
-
-	} //O(?)
+		return _front.getNext().equals(_end);
+	} //O(1)
 
 	// print each node, separated by spaces
 	public String toString() { 
-
+        String retstr = "FRONT ";
+        LLNode<T> current = _front.getNext();
+        while (!(current.getNext().equals(_end))) {
+            retstr += "-> " + current.getValue() + " ";
+            current = current.getNext();
+        }
+        retstr += "-> END";
+        return retstr;
 	}//end toString()
+
+	public T reta() {
+		return _front.getNext().getValue();
+	}
 
 	//main method for testing
 	public static void main( String[] args ) {
 
-	/*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
 
 	Queue<String> PirateQueue = new RQueue<String>();
 
@@ -105,8 +127,9 @@ public class RQueue<T> implements Queue<T> {
 	System.out.println("\nnow testing toString()..."); 
 	System.out.println( PirateQueue ); //for testing toString()...
 
-	System.out.println("\nnow dequeuing..."); 
+	System.out.printnl("\nnow dequeuing..."); 
 	System.out.println( PirateQueue.dequeue() );
+	System.out.println(PirateQueue.reta());
 	System.out.println( PirateQueue.dequeue() );
 	System.out.println( PirateQueue.dequeue() );
 	System.out.println( PirateQueue.dequeue() );
@@ -116,6 +139,7 @@ public class RQueue<T> implements Queue<T> {
 	System.out.println("\nnow dequeuing fr empty queue..."); 
 	System.out.println( PirateQueue.dequeue() );
 
+	/*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
 	^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
 
 	}//end main

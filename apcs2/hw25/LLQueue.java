@@ -76,25 +76,25 @@ public class LLQueue<T> implements Queue<T> {
 
     public static void main( String[] args ) {
 
-	Queue<String> LLQueuelJ = new LLQueue<String>();
+    Queue<String> LLQueuelJ = new LLQueue<String>();
 
-	System.out.println("\nnow enqueuing thrice...");
-	LLQueuelJ.enqueue("James");
-	LLQueuelJ.enqueue("Todd");
-	LLQueuelJ.enqueue("Smith");
+    System.out.println("\nnow enqueuing thrice...");
+    LLQueuelJ.enqueue("James");
+    LLQueuelJ.enqueue("Todd");
+    LLQueuelJ.enqueue("Smith");
 
-	System.out.println("\nnow testing toString()...");
-	System.out.println( LLQueuelJ ); //for testing toString()...
+    System.out.println("\nnow testing toString()...");
+    System.out.println( LLQueuelJ ); //for testing toString()...
 
-	System.out.println("\nnow dequeuing thrice...");
-	System.out.println( LLQueuelJ.dequeue() );
-	System.out.println( LLQueuelJ.dequeue() );
-	System.out.println( LLQueuelJ.dequeue() );
+    System.out.println("\nnow dequeuing thrice...");
+    System.out.println( LLQueuelJ.dequeue() );
+    System.out.println( LLQueuelJ.dequeue() );
+    System.out.println( LLQueuelJ.dequeue() );
 
-	System.out.println("\nDequeuing from empty queue should yield error...");
-	System.out.println( LLQueuelJ.dequeue() );
+    System.out.println("\nDequeuing from empty queue should yield error...");
+    System.out.println( LLQueuelJ.dequeue() );
 	/*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
-	  ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
+      ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
 
     }//end main
 
