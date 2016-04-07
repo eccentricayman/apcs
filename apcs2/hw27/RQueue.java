@@ -86,6 +86,7 @@ public class RQueue<T> implements Queue<T> {
 				LLNode<T> tomove = current;
 				end.setNext(tomove);
 				tomove.setNext(_end);
+                end = tomove;
 			}
 		}
 	}//end sample()
@@ -106,10 +107,6 @@ public class RQueue<T> implements Queue<T> {
         return retstr;
 	}//end toString()
 
-	public T reta() {
-		return _front.getNext().getValue();
-	}
-
 	//main method for testing
 	public static void main( String[] args ) {
 
@@ -127,9 +124,8 @@ public class RQueue<T> implements Queue<T> {
 	System.out.println("\nnow testing toString()..."); 
 	System.out.println( PirateQueue ); //for testing toString()...
 
-	System.out.printnl("\nnow dequeuing..."); 
+	System.out.println("\nnow dequeuing..."); 
 	System.out.println( PirateQueue.dequeue() );
-	System.out.println(PirateQueue.reta());
 	System.out.println( PirateQueue.dequeue() );
 	System.out.println( PirateQueue.dequeue() );
 	System.out.println( PirateQueue.dequeue() );
