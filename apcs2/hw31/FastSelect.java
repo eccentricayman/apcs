@@ -18,15 +18,15 @@ public class FastSelect {
     public static int partition(int[] arr, int pivotpos, int left, int right) {
         int pivotval = arr[pivotpos];
         swap(arr, pivotpos, right);
-        int posctr = left;
+        int posindex = left;
         for (int i = left ; i < right - 1 ; i++) {
             if (arr[i] < pivotval) {
-                swap(arr, posctr, i);
+                swap(arr, posindex, i);
             }
-            posctr++;
+            posindex++;
         }
-        swap(arr, right, posctr);
-        return posctr;
+        swap(arr, right, posindex);
+        return posindex;
     }
 
     public static int Fsel(int[] arr, int k, int low, int high) {
@@ -34,20 +34,24 @@ public class FastSelect {
             return arr[low];
         }
         else {
-            int pos = (int)((Math.random()*(high - low))) + low;
-            partition(arr, pos, low, high);
+            int range = (high - low) + 1;
+            int pos = (int)(Math.random() * ((high - low) + 1)) + low;
+            pos = partition(arr, pos, low, high);
             if (pos == k) {
                 return arr[k];
             }
+            else if (k < pos) {
+                return Fsel(arr, k, low, high--);
+            }
             else {
-                return Fsel(arr, k, low, high);
+                return Fsel(arr, k, low++, high);
             }
         }
     }
 
     public static void main(String[] args) {
         int[] x = {7, 3, 2, 1, 6};
-        System.out.println(Fsel(x, 0, 0, x.length - 1));
+        System.out.println(Fsel(x, 1, 0, x.length - 1));
     }
         
 }
