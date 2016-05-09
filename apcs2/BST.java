@@ -33,20 +33,27 @@ public class BST {
         TreeNode current = root;
         if (current == null) {
             current = toInsert;
-            return;
         }
-        while (true) {
-            if (newVal < current.getValue()) {
-                if (current.getLeft() == null) {
-                    current.setLeft(toInsert);
-                    return;
+        else {
+            while (true) {
+                if (newVal < current.getValue()) {
+                    if (current.getLeft() == null) {
+                        current.setLeft(toInsert);
+                        return;
+                    }
                 }
-            }
-            //greater than and equals to
-            else {
-                if (current.getRight() == null) {
-                    current.setRight(toInsert);
-                    return;
+                else {
+                    current = current.getLeft();
+                }
+                //greater than and equals to
+                if (newVal > current.getValue()){
+                    if (current.getRight() == null) {
+                        current.setRight(toInsert);
+                        return;
+                    }
+                }
+                else {
+                    current = current.getRight();
                 }
             }
         }
@@ -65,17 +72,17 @@ public class BST {
         TreeNode current = root;
         if (current != null) {
             System.out.println(current.getValue());
-            preOrderTrav(current.getLeft());
-            preOrderTrav(current.getRight());
+            preOrderTravH(current.getLeft());
+            preOrderTravH(current.getRight());
         }
     }
 
-    public void preOrderTrav(TreeNode start) {
+    public void preOrderTravH(TreeNode start) {
         TreeNode current = start;
         if (current != null) {
             System.out.println(current.getValue());
-            preOrderTrav(current.getLeft());
-            preOrderTrav(current.getRight());
+            preOrderTravH(current.getLeft());
+            preOrderTravH(current.getRight());
         }
     }
 
