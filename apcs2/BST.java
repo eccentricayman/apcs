@@ -12,13 +12,13 @@
 public class BST {
 
     //instance variables / attributes of a BST:
-    private Node root;
+    private TreeNode root;
 
     /*****************************************************
      * default constructor
      *****************************************************/
     BST( ) {
-	/*** YOUR IMPLEMENTATION HERE ***/
+        /*** YOUR IMPLEMENTATION HERE ***/
         root = null;
     }
 
@@ -33,9 +33,22 @@ public class BST {
         TreeNode current = root;
         if (current == null) {
             current = toInsert;
+            return;
         }
-        else {
-            if ()
+        while (true) {
+            if (newVal < current.getValue()) {
+                if (current.getLeft() == null) {
+                    current.setLeft(toInsert);
+                    return;
+                }
+            }
+            //greater than and equals to
+            else {
+                if (current.getRight() == null) {
+                    current.setRight(toInsert);
+                    return;
+                }
+            }
         }
     }
 
@@ -48,17 +61,32 @@ public class BST {
 
     public void preOrderTrav() 
     {
-    	/*** YOUR IMPLEMENTATION HERE ***/
+        /*** YOUR IMPLEMENTATION HERE ***/
+        TreeNode current = root;
+        if (current != null) {
+            System.out.println(current.getValue());
+            preOrderTrav(current.getLeft());
+            preOrderTrav(current.getRight());
+        }
+    }
+
+    public void preOrderTrav(TreeNode start) {
+        TreeNode current = start;
+        if (current != null) {
+            System.out.println(current.getValue());
+            preOrderTrav(current.getLeft());
+            preOrderTrav(current.getRight());
+        }
     }
 
     public void inOrderTrav() 
     {
-    	/*** YOUR IMPLEMENTATION HERE ***/
+        /*** YOUR IMPLEMENTATION HERE ***/
     }
 
     public void postOrderTrav() 
     {
-    	/*** YOUR IMPLEMENTATION HERE ***/
+        /*** YOUR IMPLEMENTATION HERE ***/
     }
     //~~~~~~~~~~~~~^~~TRAVERSALS~~^~~~~~~~~~~~~~~~~~~~~~
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -67,25 +95,25 @@ public class BST {
     //main method for testing
     public static void main( String[] args ) {
 
-	/*~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~
-	BST arbol = new BST();
+        BST arbol = new BST();
 
-	arbol.insert( 4 );
-	arbol.insert( 2 );
-	arbol.insert( 5 );
-	arbol.insert( 6 );
-	arbol.insert( 1 );
-	arbol.insert( 3 );
+        arbol.insert( 4 );
+        arbol.insert( 2 );
+        arbol.insert( 5 );
+        arbol.insert( 6 );
+        arbol.insert( 1 );
+        arbol.insert( 3 );
 
-	System.out.println( "\npre-order traversal:" );
-	arbol.preOrderTrav();
+        System.out.println( "\npre-order traversal:" );
+        arbol.preOrderTrav();
 
-	System.out.println( "\nin-order traversal:" );
-	arbol.inOrderTrav();
+        /*~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~
+          System.out.println( "\nin-order traversal:" );
+          arbol.inOrderTrav();
 	
-	System.out.println( "\npost-order traversal:" );
-	arbol.postOrderTrav();	
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+          System.out.println( "\npost-order traversal:" );
+          arbol.postOrderTrav();	
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     }
 
 }//end class
