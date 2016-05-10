@@ -1,3 +1,10 @@
+/*
+Ayman Ahmed
+APCS2 pd5
+HW#36 -- Algorithm as Data Structure
+2016-05-09
+*/
+
 /*****************************************************
  * class BST - skeleton
  * Implementation of the BINARY SEARCH TREE abstract data type (ADT) 
@@ -29,36 +36,21 @@ public class BST {
      *****************************************************/
     public void insert( int newVal ) {
      	/*** YOUR IMPLEMENTATION HERE ***/
-        TreeNode toInsert = new TreeNode(newVal);
-        TreeNode current = root;
-        if (current == null) {
-            current = toInsert;
-        }
-        else {
-            while (true) {
-                if (newVal < current.getValue()) {
-                    if (current.getLeft() == null) {
-                        current.setLeft(toInsert);
-                        return;
-                    }
-                }
-                else {
-                    current = current.getLeft();
-                }
-                //greater than and equals to
-                if (newVal > current.getValue()){
-                    if (current.getRight() == null) {
-                        current.setRight(toInsert);
-                        return;
-                    }
-                }
-                else {
-                    current = current.getRight();
-                }
-            }
-        }
+        root = insertH(root, newVal);
     }
 
+    public TreeNode insertH(TreeNode current, int newVal) {
+        if (current == null) {
+            return new TreeNode(newVal);
+        }
+        if (current.getValue() < newVal) {
+            current.setLeft(insertH(current.getLeft(), newVal));
+        }
+        else if (current.getValue() > newVal) {
+            current.setRight(insertH(current.getRight(), newVal));
+        }
+        return current;
+    }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //~~~~~~~~~~~~~v~~TRAVERSALS~~v~~~~~~~~~~~~~~~~~~~~~
@@ -69,32 +61,45 @@ public class BST {
     public void preOrderTrav() 
     {
         /*** YOUR IMPLEMENTATION HERE ***/
-        TreeNode current = root;
-        if (current != null) {
-            System.out.println(current.getValue());
-            preOrderTravH(current.getLeft());
-            preOrderTravH(current.getRight());
-        }
+        preOrderTravH(root);
     }
 
     public void preOrderTravH(TreeNode start) {
-        TreeNode current = start;
-        if (current != null) {
-            System.out.println(current.getValue());
-            preOrderTravH(current.getLeft());
-            preOrderTravH(current.getRight());
+        if (start != null) {
+            System.out.println(start.getValue());
+            preOrderTravH(start.getLeft());
+            preOrderTravH(start.getRight());
         }
     }
 
     public void inOrderTrav() 
     {
         /*** YOUR IMPLEMENTATION HERE ***/
+        inordertravH(root);
+    }
+
+    public void inordertravH(TreeNode start) {
+        if (start != null) {
+            inordertravH(start.getLeft());
+            System.out.println(start.getValue());
+            inordertravH(start.getRight());
+        }
     }
 
     public void postOrderTrav() 
     {
         /*** YOUR IMPLEMENTATION HERE ***/
+        postOrderTravH(root);
     }
+
+    public void postOrderTravH(TreeNode start) {
+        if (start != null) {
+            postOrderTravH(start.getLeft());
+            postOrderTravH(start.getRight());
+            System.out.println(start.getValue());
+        }
+    }
+    
     //~~~~~~~~~~~~~^~~TRAVERSALS~~^~~~~~~~~~~~~~~~~~~~~~
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -114,19 +119,13 @@ public class BST {
         System.out.println( "\npre-order traversal:" );
         arbol.preOrderTrav();
 
-        /*~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~
           System.out.println( "\nin-order traversal:" );
           arbol.inOrderTrav();
 	
           System.out.println( "\npost-order traversal:" );
           arbol.postOrderTrav();	
+          /*~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~
           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     }
 
 }//end class
-
-
-
-
-
-    
