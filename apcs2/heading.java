@@ -22,9 +22,9 @@ public class heading {
                     System.out.println("Couldn't create the directory, your hw number already exists.");
                 }
                 String filler = userin.nextLine();
-                System.out.println("Enter HW summary: ");
+                System.out.print("Enter HW summary: ");
                 hwsummary = userin.nextLine();
-                System.out.println("Enter file name: ");
+                System.out.print("Enter file name: ");
                 filename = userin.nextLine();
                 filename += ".java";
                 new File("/hw" + hwnum +"/" + filename);
